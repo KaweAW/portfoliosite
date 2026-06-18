@@ -18,15 +18,17 @@ export const DynamicCanvas = () => {
   const mouseY = useMotionValue(0)
   const springX = useSpring(mouseX, { stiffness: 150, damping: 15 })
   const springY = useSpring(mouseY, { stiffness: 150, damping: 15 })
+  const [hasMoved, setHasMoved] = useState(false)
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
+      if (!hasMoved) setHasMoved(true)
       mouseX.set(e.clientX)
       mouseY.set(e.clientY)
     }
     window.addEventListener("mousemove", handleMouseMove)
     return () => window.removeEventListener("mousemove", handleMouseMove)
-  }, [mouseX, mouseY])
+  }, [mouseX, mouseY, hasMoved])
 
   const t = TRANSLATIONS[language]
 
