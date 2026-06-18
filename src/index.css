@@ -1,0 +1,11 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    @apply bg-black text-white font-mono uppercase tracking-tighter;
+  }
+}
+
+.glitch-text {
+  @apply relative;
+}
