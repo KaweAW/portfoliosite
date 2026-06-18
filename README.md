@@ -2,7 +2,7 @@
 
 A minimalist, brutalist-inspired interactive portfolio built with **React**, **Tailwind CSS**, and **Framer Motion**. Designed to feel like a digital canvas or a high-end terminal, focusing on typography, fluid animations, and a seamless user experience.
 
-![Portfolio Preview](./public/preview-image.png) <!-- Add a screenshot of your site here and name it preview-image.png in the public folder -->
+![Portfolio Preview](public/preview.png)
 
 ## ✨ Features
 
@@ -26,6 +26,7 @@ A minimalist, brutalist-inspired interactive portfolio built with **React**, **T
 
 The repository follows a modular architecture that strictly separates global application state, static multilingual content, and isolated layout components.
 
+```text
 ├── public/                  # Static assets
 │   ├── Firma.png            # Elegant background watermark
 │   ├── cv_kawe_longon.pdf   # Italian resume asset
