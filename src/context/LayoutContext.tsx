@@ -1,7 +1,7 @@
 "use client"
 import React, { createContext, useContext, useState } from "react"
 
-export type Language = "IT" | "EN" | "DE" | "RU"
+export type Language = "EN" | "IT" | "FR" | "DE" | "RU"
 
 interface LayoutContextType {
   currentView: string
@@ -14,7 +14,7 @@ const LayoutContext = createContext<LayoutContextType | undefined>(undefined)
 
 export const LayoutProvider = ({ children }: { children: React.ReactNode }) => {
   const [currentView, setCurrentView] = useState("HOME")
-  const [language, setLanguage] = useState<Language>("IT")
+  const [language, setLanguage] = useState<Language>("EN") 
 
   return (
     <LayoutContext.Provider value={{ currentView, setCurrentView, language, setLanguage }}>

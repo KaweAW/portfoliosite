@@ -33,7 +33,7 @@ export const CustomCursor = () => {
 
 const LanguageSwitcher = () => {
   const { language, setLanguage } = useLayout()
-  const languages: Language[] = ["IT", "EN", "DE", "RU"]
+  const languages: Language[] = ["EN", "IT", "FR", "DE", "RU"]
 
   return (
     <div className="fixed top-4 left-4 md:top-8 md:left-8 z-9999 flex gap-3 font-mono text-xs md:text-xs tracking-widest mix-blend-difference text-white bg-black/50 md:bg-transparent p-2 md:p-0 backdrop-blur-sm md:backdrop-blur-none border border-white/10 md:border-transparent">
