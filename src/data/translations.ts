@@ -22,7 +22,7 @@ export const TRANSLATIONS: Record<Language, any> = {
         { date: "OTT 2024", title: "ITS ALTO ADRIATICO", desc: "Inizio specializzazione sviluppo web.", img: "/portfoliopic4.jpg" },
         { date: "MAR 2025", title: "PRIMO SITO COMMISSIONATO", desc: "Traguardo professionale freelance.", img: "/portfoliopic6.jpg" },
         { date: "GIU 2025 - IN CORSO", title: "DEV @ STIGA", desc: "Tirocinio e collaborazione continuativa: Flutter app bugfixing & React/TS portal rinnovo.", img: "/stiga-experience.webp" },
-        { date: "GIU 2026", title: "DIPLOMA ITS ALTO ADRIATICO", desc: "Conseguimento del diploma di specializzazione in sviluppo web." }
+        { date: "GIU 2026", title: "DIPLOMA ITS ALTO ADRIATICO", desc: "Conseguimento del diploma di specializzazione in sviluppo web.", img: "/ITSfinale.jpeg" }
       ]
     },
     info: {
@@ -53,7 +53,7 @@ export const TRANSLATIONS: Record<Language, any> = {
         { date: "OCT 2024", title: "ITS ALTO ADRIATICO", desc: "Began web development specialization.", img: "/portfoliopic4.jpg" },
         { date: "MAR 2025", title: "FIRST COMMISSIONED WEBSITE", desc: "Freelance professional milestone.", img: "/portfoliopic6.jpg" },
         { date: "JUN 2025 - ONGOING", title: "DEV @ STIGA", desc: "Ongoing internship and collaboration: Flutter app bugfixing & React/TS portal renewal.", img: "/stiga-experience.webp" },
-        { date: "JUN 2026", title: "ITS ALTO ADRIATICO DIPLOMA", desc: "Graduation in web development specialization." }
+        { date: "JUN 2026", title: "ITS ALTO ADRIATICO DIPLOMA", desc: "Graduation in web development specialization.", img: "/ITSfinale.jpeg" }
       ]
     },
     info: {
@@ -61,6 +61,37 @@ export const TRANSLATIONS: Record<Language, any> = {
       data_extract: "/ DATA_EXTRACT",
       download: "DOWNLOAD RESUME",
       contacts: { phone: "PHONE", email: "EMAIL", whatsapp: "WHATSAPP", start_chat: "START CHAT" }
+    }
+  },
+  FR: {
+    home: { subtitle: "DÉVELOPPEUR FRONTEND" },
+    nav: { work: "// TRAVAUX", timeline: "// PARCOURS", info: "// INFO" },
+    headers: { work: "TRAVAUX", info: "INFO" },
+    projects: {
+      dir: "[ DIR: /PROJETS/INDEX ]",
+      items: [
+        { id: "01", title: "CABINET MÉDICAL", desc: "Site web avec système de réservation en ligne.", url: "https://www.dottmaicobattistello.it/", img: "/dottmaicobattistello.png" },
+        { id: "02", title: "PORTAIL INTERNE", desc: "Logiciel de gestion pour les employés et revendeurs.", url: "https://stiga-csp-prod.web.app/", img: "/portale-ssp.png" },
+        { id: "03", title: "ARTISTE STORYBOARD", desc: "Site portfolio pour un artiste storyboard 2D.", url: "https://www.tommasotamburini.com/", img: "/storyboardartist.png" },
+      ]
+    },
+    timeline: {
+      title: "PARCOURS",
+      items: [
+        { date: "JUIL 2023", title: "DOUBLE DIPLÔME LINGUISTIQUE", desc: "Obtention du diplôme du Liceo Brocchi (Bassano del Grappa).", img: "/portfoliopic1.jpeg" },
+        { date: "SEP 2023", title: "EMPLOYÉ DE BUREAU CHEZ JULIA ITALIA", desc: "Entreprise d'ameublement.", img: "/portfoliopic2.jpg" },
+        { date: "FÉV 2024", title: "CLINIQUE INDONÉSIE", desc: "Expérience de travail internationale.", img: "/portfoliopic3.jpg" },
+        { date: "OCT 2024", title: "ITS ALTO ADRIATICO", desc: "Début de la spécialisation en développement web.", img: "/portfoliopic4.jpg" },
+        { date: "MAR 2025", title: "PREMIER SITE COMMANDÉ", desc: "Étape professionnelle en freelance.", img: "/portfoliopic6.jpg" },
+        { date: "JUIN 2025 - EN COURS", title: "DEV @ STIGA", desc: "Stage et collaboration continue : correction de bugs Flutter & renouvellement du portail React/TS.", img: "/stiga-experience.webp" },
+        { date: "JUIN 2026", title: "DIPLÔME ITS ALTO ADRIATICO", desc: "Obtention du diplôme de spécialisation en développement web.", img: "/ITSfinale.jpeg" }
+      ]
+    },
+    info: {
+      contact_protocols: "/ PROTOCOLES_DE_CONTACT",
+      data_extract: "/ EXTRACTION_DE_DONNÉES",
+      download: "TÉLÉCHARGER CV",
+      contacts: { phone: "TÉLÉPHONE", email: "EMAIL", whatsapp: "WHATSAPP", start_chat: "DÉMARRER LE CHAT" }
     }
   },
   DE: {
@@ -84,7 +115,7 @@ export const TRANSLATIONS: Record<Language, any> = {
         { date: "OKT 2024", title: "ITS ALTO ADRIATICO", desc: "Beginn der Spezialisierung auf Webentwicklung.", img: "/portfoliopic4.jpg" },
         { date: "MÄZ 2025", title: "ERSTE AUFTRAGSWEBSITE", desc: "Meilenstein als freiberuflicher Entwickler.", img: "/portfoliopic6.jpg" },
         { date: "JUN 2025 - LAUFEND", title: "DEV @ STIGA", desc: "Praktikum und laufende Zusammenarbeit: Flutter-App Bugfixing & React/TS Portal-Erneuerung.", img: "/stiga-experience.webp" },
-        { date: "JUN 2026", title: "ITS ALTO ADRIATICO DIPLOM", desc: "Abschluss in der Spezialisierung auf Webentwicklung." }
+        { date: "JUN 2026", title: "ITS ALTO ADRIATICO DIPLOM", desc: "Abschluss in der Spezialisierung auf Webentwicklung.", img: "/ITSfinale.jpeg" }
       ]
     },
     info: {
@@ -115,7 +146,7 @@ export const TRANSLATIONS: Record<Language, any> = {
         { date: "ОКТ 2024", title: "ITS ALTO ADRIATICO", desc: "Начало специализации в веб-разработке.", img: "/portfoliopic4.jpg" },
         { date: "МАРТ 2025", title: "ПЕРВЫЙ ЗАКАЗНОЙ САЙТ", desc: "Важный профессиональный рубеж во фрилансе.", img: "/portfoliopic6.jpg" },
         { date: "ИЮНЬ 2025 - В ПРОЦЕССЕ", title: "DEV @ STIGA", desc: "Стажировка и долгосрочное сотрудничество: исправление багов во Flutter и обновление внутреннего портала на React/TS.", img: "/stiga-experience.webp" },
-        { date: "ИЮНЬ 2026", title: "ДИПЛОМ ITS ALTO ADRIATICO", desc: "Получение диплома по специализации веб-разработки." }
+        { date: "ИЮНЬ 2026", title: "ДИПЛОМ ITS ALTO ADRIATICO", desc: "Получение диплома по специализации веб-разработки.", img: "/ITSfinale.jpeg" }
       ]
     },
     info: {

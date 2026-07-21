@@ -11,7 +11,7 @@ A minimalist, brutalist-inspired interactive portfolio built with **React**, **T
 - 🖱️ **Desktop Floating Previews:** Images smoothly follow the cursor on hover using physics-based spring animations.
 - 🔀 **Dynamic Canvas Routing:** A Single Page Application (SPA) feel that transitions seamlessly between Home, Projects, Experience, and Contact views without page reloads.
 - 🔠 **Scramble Text Effect:** Cyberpunk-style text decoding animations for titles and navigation.
-- 🌍 **Bilingual Support (i18n):** Built-in lightweight context for quick switching between English, Italian, German and Russian (`translations.ts`).
+- 🌍 **Bilingual Support (i18n):** Built-in lightweight context for quick switching between English, Italian, French, German and Russian (`translations.ts`).
 - 📄 **Resume Integration:** Dedicated section for quick PDF resume downloads based on the selected language.
 
 ## 🛠️ Tech Stack
@@ -41,4 +41,4 @@ The repository follows a modular architecture that strictly separates global app
 │   ├── context/
 │   │   └── LayoutContext.tsx # Central React Context (Global state)
 │   └── data/
-│       └── translations.ts  # Structured dictionary for EN / IT / DE / RU
+│       └── translations.ts  # Structured dictionary for EN / IT / FR / DE / RU
