@@ -1,6 +1,7 @@
 import { motion } from "framer-motion"
 import { useLayout } from "../../hooks/useLayout"
 import { cn } from "../../lib/cn"
+import { Link } from "../ui/Link"
 import { hrefFor, VIEW_IDS } from "../../routes"
 
 export const Navigation = () => {
@@ -14,7 +15,7 @@ export const Navigation = () => {
       {VIEW_IDS.map((id) => {
         const isActive = id === view
         return (
-          <a
+          <Link
             key={id}
             href={hrefFor(id)}
             aria-current={isActive ? "page" : undefined}
@@ -30,7 +31,7 @@ export const Navigation = () => {
                 className="absolute bottom-0 left-0 hidden h-px w-full bg-white md:-bottom-1 md:block"
               />
             )}
-          </a>
+          </Link>
         )
       })}
     </nav>

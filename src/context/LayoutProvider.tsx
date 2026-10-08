@@ -2,13 +2,13 @@ import { useCallback, useEffect, useMemo, useState, type ReactNode } from "react
 import { SITE_NAME, SITE_TITLE } from "../data/site"
 import { localeFor } from "../data/languages"
 import { TRANSLATIONS } from "../data/translations"
-import { useHashView } from "../hooks/useHashView"
+import { useRoute } from "../hooks/useRoute"
 import { getInitialLanguage, saveLanguage } from "../lib/language"
 import type { Language } from "../types"
 import { LayoutContext, type LayoutContextValue } from "./layout-context"
 
 export const LayoutProvider = ({ children }: { children: ReactNode }) => {
-  const view = useHashView()
+  const { view, project } = useRoute()
   const [language, setLanguageState] = useState<Language>(getInitialLanguage)
 
   const setLanguage = useCallback((next: Language) => {
@@ -24,12 +24,13 @@ export const LayoutProvider = ({ children }: { children: ReactNode }) => {
   }, [language])
 
   useEffect(() => {
-    document.title = view === "home" ? SITE_TITLE : `${t.nav[view]} | ${SITE_NAME}`
-  }, [view, t])
+    if (project) document.title = `${t.projects.items[project.id].title} | ${SITE_NAME}`
+    else document.title = view === "home" ? SITE_TITLE : `${t.nav[view]} | ${SITE_NAME}`
+  }, [view, project, t])
 
   const value = useMemo<LayoutContextValue>(
-    () => ({ view, language, setLanguage, t }),
-    [view, language, setLanguage, t],
+    () => ({ view, project, language, setLanguage, t }),
+    [view, project, language, setLanguage, t],
   )
 
   return <LayoutContext.Provider value={value}>{children}</LayoutContext.Provider>
