@@ -7,8 +7,8 @@ A minimalist, brutalist-inspired interactive portfolio built with **React 19**, 
 ## Features
 
 - **Brutalist & minimalist UI:** dark by default, monospace typography, grid-based layout.
-- **Mobile parallax scrolling:** scroll-linked parallax for images on mobile. Rendered only on mobile, so desktop never pays for it.
-- **Desktop floating previews:** images follow the cursor on hover (and keyboard focus) with a spring.
+- **Mobile screenshots:** each project shows a phone-sized screenshot on mobile (tall ones scroll through as you scroll). Rendered only on mobile, so desktop never pays for it.
+- **Desktop floating previews:** the desktop screenshot follows the cursor on hover (and keyboard focus) with a spring.
 - **URL-based views:** Home, Work, Timeline and Info live in the URL hash (`#/projects`, `#/timeline`, `#/contact`), so deep links and the browser back button work.
 - **Scramble text effect:** text decoding animation for titles. Screen readers get the real text, and it is skipped for visitors who prefer reduced motion.
 - **Five languages (EN, IT, FR, DE, RU):** picked from the browser language on first visit, remembered afterwards. Dates are formatted per language with `Intl`.
@@ -41,7 +41,7 @@ npm run preview    # serve the production build locally
     ├── animations/            # Framer Motion variants
     ├── components/
     │   ├── layout/            # Cursor, language switcher, navigation, hover preview, skip link
-    │   ├── ui/                # PageShell, ParallaxImage, ScrambleText
+    │   ├── ui/                # PageShell, ParallaxImage, ScreenshotImage, ScrambleText
     │   ├── views/             # HomeView, ProjectsView, TimelineView, ContactView
     │   └── ViewRouter.tsx     # Picks the view for the current URL hash
     ├── context/               # Layout (view + language + copy) and hover-preview state
@@ -59,7 +59,7 @@ Content that does not change between languages (URLs, images, dates) lives in `d
 **A project**
 
 1. Add its id to `ProjectId` in `src/types.ts`.
-2. Add `{ id, url, image }` to `src/data/projects.ts` and put the image in `public/` (WebP, about 1400px wide).
+2. Add `{ id, url, image, mobileImage? }` to `src/data/projects.ts` (images are `{ src, width, height }`). Put the desktop screenshot in `public/` (WebP, about 1400px wide); `mobileImage` is an optional phone screenshot, and without it mobile shows the desktop one.
 3. Add `title` and `desc` under `projects.items` for every language in `src/data/translations.ts`.
 
 TypeScript reports an error until every language has the new entry. Timeline entries work the same way with `TimelineId`, `data/timeline.ts` and `timeline.items`.

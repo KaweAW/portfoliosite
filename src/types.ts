@@ -4,12 +4,22 @@ export type Language = "EN" | "IT" | "FR" | "DE" | "RU"
 
 /* ---------- Content that does not change between languages ---------- */
 
-export type ProjectId = "medical" | "portal" | "storyboard"
+export type ProjectId = "medical" | "portal" | "storyboard" | "scaletta" | "templateZero"
+
+export interface ProjectImage {
+  src: string
+  /** Natural size in pixels. Used to pick a frame that fits the screenshot. */
+  width: number
+  height: number
+}
 
 export interface Project {
   id: ProjectId
   url: string
-  image: string
+  /** Desktop screenshot: shown in the cursor-following preview on hover. */
+  image: ProjectImage
+  /** Phone-sized screenshot for small screens. Falls back to `image` when missing. */
+  mobileImage?: ProjectImage
 }
 
 export type TimelineId =
