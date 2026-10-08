@@ -7,19 +7,27 @@
     <meta name="color-scheme" content="dark" />
     <meta name="theme-color" content="#000000" />
 
-    <title>KwLngn | Kawe Longon, Frontend Developer</title>
-    <meta
-      name="description"
-      content="Portfolio of Kawe Longon, frontend developer. Selected websites, web apps and a timeline of studies and work."
-    />
+    <!-- Title, description, canonical, Open Graph and structured data are generated per page by vite-plugins/seo.ts -->
+    <!--seo-->
 
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="KwLngn | Kawe Longon, Frontend Developer" />
-    <meta
-      property="og:description"
-      content="Portfolio of Kawe Longon, frontend developer. Selected websites, web apps and a timeline of studies and work."
-    />
-    <meta name="twitter:card" content="summary_large_image" />
+    <style>
+      /* Shown while the app loads: no white flash, and readable text for visitors without JavaScript. */
+      html,
+      body {
+        margin: 0;
+        background: #000;
+        color: #e0e0e0;
+      }
+      body {
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      }
+      main.prerender {
+        padding: 2rem;
+      }
+      main.prerender a {
+        color: #fff;
+      }
+    </style>
   </head>
   <body>
     <div id="root"></div>

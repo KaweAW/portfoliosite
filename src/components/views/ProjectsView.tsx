@@ -1,10 +1,12 @@
-import { useRef, type RefObject } from "react"
+import { useEffect, useRef, type RefObject } from "react"
 import { motion } from "framer-motion"
 import { itemVariants } from "../../animations"
 import { PROJECTS } from "../../data/projects"
 import { useLayout } from "../../hooks/useLayout"
 import { usePreviewActions } from "../../hooks/usePreview"
+import { projectHref } from "../../routes"
 import type { Project } from "../../types"
+import { Link } from "../ui/Link"
 import { PageHeader, PageShell } from "../ui/PageShell"
 import { ScreenshotImage } from "../ui/ScreenshotImage"
 
@@ -19,15 +21,16 @@ const ProjectRow = ({ project, index, scrollRef }: ProjectRowProps) => {
   const { show, hide } = usePreviewActions()
   const copy = t.projects.items[project.id]
 
+  // Clicking a row replaces the page, so the row never sees the mouse leave: hide the preview when it goes away.
+  useEffect(() => hide, [hide])
+
   return (
     <motion.li variants={itemVariants}>
-      <a
-        href={project.url}
-        target="_blank"
-        rel="noreferrer"
-        onMouseEnter={() => show(project.image.src)}
+      <Link
+        href={projectHref(project.slug)}
+        onMouseEnter={() => show(project.image.src, project.video)}
         onMouseLeave={hide}
-        onFocus={() => show(project.image.src)}
+        onFocus={() => show(project.image.src, project.video)}
         onBlur={hide}
         className="group relative flex flex-col justify-between border-b border-white/10 px-2 py-6 transition-colors duration-300 focus-visible:bg-white focus-visible:text-black active:bg-white active:text-black md:px-4 md:py-10 md:hover:bg-white md:hover:text-black"
       >
@@ -46,8 +49,7 @@ const ProjectRow = ({ project, index, scrollRef }: ProjectRowProps) => {
         </div>
 
         <ScreenshotImage image={project.mobileImage ?? project.image} containerRef={scrollRef} />
-        <span className="sr-only">{t.a11y.opensInNewTab}</span>
-      </a>
+      </Link>
     </motion.li>
   )
 }
