@@ -54,8 +54,9 @@ const headBlock = (page: PageSeo): string => {
 }
 
 /**
- * Plain HTML shown before the app starts, and to crawlers and visitors without
- * JavaScript. React replaces it as soon as it loads.
+ * Plain HTML for crawlers and visitors without JavaScript. It is hidden
+ * visually (see `main.prerender` in index.html) so nobody sees it flash
+ * before the app starts; React replaces it as soon as it loads.
  */
 const fallbackBody = (page: PageSeo): string => {
   const en = TRANSLATIONS.EN

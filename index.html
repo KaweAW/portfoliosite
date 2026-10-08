@@ -11,7 +11,7 @@
     <!--seo-->
 
     <style>
-      /* Shown while the app loads: no white flash, and readable text for visitors without JavaScript. */
+      /* Black background while the app loads (no white flash). */
       html,
       body {
         margin: 0;
@@ -21,13 +21,37 @@
       body {
         font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
       }
+      /* Text for crawlers and screen readers only: hidden visually so it never flashes before the app starts. */
       main.prerender {
-        padding: 2rem;
-      }
-      main.prerender a {
-        color: #fff;
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        margin: -1px;
+        padding: 0;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
       }
     </style>
+    <noscript>
+      <style>
+        /* Without JavaScript the plain text is the page, so show it. */
+        main.prerender {
+          position: static;
+          width: auto;
+          height: auto;
+          margin: 0;
+          padding: 2rem;
+          overflow: visible;
+          clip: auto;
+          white-space: normal;
+        }
+        main.prerender a {
+          color: #fff;
+        }
+      </style>
+    </noscript>
   </head>
   <body>
     <div id="root"></div>

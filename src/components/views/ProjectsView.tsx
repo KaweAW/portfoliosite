@@ -28,9 +28,9 @@ const ProjectRow = ({ project, index, scrollRef }: ProjectRowProps) => {
     <motion.li variants={itemVariants}>
       <Link
         href={projectHref(project.slug)}
-        onMouseEnter={() => show(project.image.src, project.video)}
+        onMouseEnter={() => show(project.image.src)}
         onMouseLeave={hide}
-        onFocus={() => show(project.image.src, project.video)}
+        onFocus={() => show(project.image.src)}
         onBlur={hide}
         className="group relative flex flex-col justify-between border-b border-white/10 px-2 py-6 transition-colors duration-300 focus-visible:bg-white focus-visible:text-black active:bg-white active:text-black md:px-4 md:py-10 md:hover:bg-white md:hover:text-black"
       >

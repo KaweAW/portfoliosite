@@ -27,8 +27,6 @@ export interface Project {
   image: ProjectImage
   /** Phone-sized screenshot for small screens. Falls back to `image` when missing. */
   mobileImage?: ProjectImage
-  /** Short silent loop played in the desktop hover preview (WebM, loaded only on hover). */
-  video?: string
 }
 
 /** Text of a project's case study page. */
@@ -88,10 +86,7 @@ export interface Translation {
     dataExtract: string
     download: string
     contacts: {
-      phone: string
       email: string
-      whatsapp: string
-      startChat: string
     }
   }
   projectPage: {

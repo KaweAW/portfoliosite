@@ -37,7 +37,7 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       contactProtocols: "/ PROTOCOLLI_CONTATTO",
       dataExtract: "/ ESTRAZIONE_DATI",
       download: "SCARICA CV",
-      contacts: { phone: "TELEFONO", email: "EMAIL", whatsapp: "WHATSAPP", startChat: "INIZIA CHAT" },
+      contacts: { email: "EMAIL" },
     },
     projectPage: {
       back: "Torna ai progetti",
@@ -96,7 +96,7 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       contactProtocols: "/ CONTACT_PROTOCOLS",
       dataExtract: "/ DATA_EXTRACT",
       download: "DOWNLOAD RESUME",
-      contacts: { phone: "PHONE", email: "EMAIL", whatsapp: "WHATSAPP", startChat: "START CHAT" },
+      contacts: { email: "EMAIL" },
     },
     projectPage: {
       back: "Back to projects",
@@ -155,7 +155,7 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       contactProtocols: "/ PROTOCOLES_DE_CONTACT",
       dataExtract: "/ EXTRACTION_DE_DONNÉES",
       download: "TÉLÉCHARGER CV",
-      contacts: { phone: "TÉLÉPHONE", email: "EMAIL", whatsapp: "WHATSAPP", startChat: "DÉMARRER LE CHAT" },
+      contacts: { email: "EMAIL" },
     },
     projectPage: {
       back: "Retour aux projets",
@@ -214,7 +214,7 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       contactProtocols: "/ KONTAKT_PROTOKOLLE",
       dataExtract: "/ DATEN_EXTRAKT",
       download: "RESUME LADEN",
-      contacts: { phone: "TELEFON", email: "E-MAIL", whatsapp: "WHATSAPP", startChat: "CHAT STARTEN" },
+      contacts: { email: "E-MAIL" },
     },
     projectPage: {
       back: "Zurück zu den Projekten",
@@ -273,7 +273,7 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       contactProtocols: "/ ПРОТОКОЛЫ_СВЯЗИ",
       dataExtract: "/ ВЫГРУЗКА_ДАННЫХ",
       download: "СКАЧАТЬ РЕЗЮМЕ",
-      contacts: { phone: "ТЕЛЕФОН", email: "EMAIL", whatsapp: "WHATSAPP", startChat: "НАЧАТЬ ЧАТ" },
+      contacts: { email: "EMAIL" },
     },
     projectPage: {
       back: "Назад к проектам",

@@ -9,9 +9,7 @@ export const ContactView = () => {
   const resumeFile = RESUME_FILES[language]
 
   const contacts = [
-    { id: "phone", label: t.info.contacts.phone, value: CONTACT.phoneDisplay, href: `tel:${CONTACT.phone}` },
     { id: "email", label: t.info.contacts.email, value: CONTACT.email, href: `mailto:${CONTACT.email}` },
-    { id: "whatsapp", label: t.info.contacts.whatsapp, value: t.info.contacts.startChat, href: CONTACT.whatsapp },
     { id: "github", label: "GitHub", value: CONTACT.githubDisplay, href: CONTACT.github },
     { id: "linkedin", label: "LinkedIn", value: CONTACT.linkedinDisplay, href: CONTACT.linkedin },
   ]
