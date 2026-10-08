@@ -12,6 +12,8 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       title: "LAVORI",
       dir: "[ DIR: /PROGETTI/INDEX ]",
       items: {
+        scaletta: { title: "SCALETTA", desc: "App per le scalette di una band: accordi, modalità palco e condivisione live, anche offline." },
+        templateZero: { title: "TEMPLATE ZERO", desc: "Template di sito multilingua e menu con QR code per ristoranti, bar e caffè." },
         medical: { title: "STUDIO MEDICO", desc: "Sito web con sistema di prenotazione online." },
         portal: { title: "PORTALE INTERNO", desc: "Gestionale per dipendenti e rivenditori aziendali." },
         storyboard: { title: "STORYBOARD ARTIST", desc: "Sito portfolio per un artista di storyboard 2D." },
@@ -52,6 +54,8 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       title: "WORK",
       dir: "[ DIR: /PROJECTS/INDEX ]",
       items: {
+        scaletta: { title: "SCALETTA", desc: "Setlist app for bands: chord charts, stage mode and live sharing, even offline." },
+        templateZero: { title: "TEMPLATE ZERO", desc: "Multilingual website and QR table menu template for restaurants, bars and cafes." },
         medical: { title: "MEDICAL STUDIO", desc: "Website with an online booking system." },
         portal: { title: "INTERNAL PORTAL", desc: "Management software for employees and corporate dealers." },
         storyboard: { title: "STORYBOARD ARTIST", desc: "Portfolio website for a 2D storyboard artist." },
@@ -92,6 +96,8 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       title: "TRAVAUX",
       dir: "[ DIR: /PROJETS/INDEX ]",
       items: {
+        scaletta: { title: "SCALETTA", desc: "Application de setlists pour groupes : grilles d'accords, mode scène et partage en direct, même hors ligne." },
+        templateZero: { title: "TEMPLATE ZERO", desc: "Modèle de site multilingue et de menu QR pour restaurants, bars et cafés." },
         medical: { title: "CABINET MÉDICAL", desc: "Site web avec système de réservation en ligne." },
         portal: { title: "PORTAIL INTERNE", desc: "Logiciel de gestion pour les employés et revendeurs." },
         storyboard: { title: "ARTISTE STORYBOARD", desc: "Site portfolio pour un artiste storyboard 2D." },
@@ -132,6 +138,8 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       title: "ARBEITEN",
       dir: "[ DIR: /PROJEKTE/INDEX ]",
       items: {
+        scaletta: { title: "SCALETTA", desc: "Setlist-App für Bands: Akkordblätter, Bühnenmodus und Live-Sharing, auch offline." },
+        templateZero: { title: "TEMPLATE ZERO", desc: "Mehrsprachige Website- und QR-Menü-Vorlage für Restaurants, Bars und Cafés." },
         medical: { title: "ARZTPRAXIS", desc: "Website mit einem Online-Buchungssystem." },
         portal: { title: "INTERNES PORTAL", desc: "Managementsystem für Mitarbeiter und Händler." },
         storyboard: { title: "STORYBOARD-KÜNSTLER", desc: "Portfolio-Website für einen 2D-Storyboard-Künstler." },
@@ -172,6 +180,8 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       title: "РАБОТЫ",
       dir: "[ ДИР: /PROJECTS/INDEX ]",
       items: {
+        scaletta: { title: "SCALETTA", desc: "Приложение для сет-листов групп: аккорды, режим сцены и совместный доступ, работает офлайн." },
+        templateZero: { title: "TEMPLATE ZERO", desc: "Шаблон многоязычного сайта и QR-меню для ресторанов, баров и кафе." },
         medical: { title: "МЕДИЦИНСКИЙ ЦЕНТР", desc: "Веб-сайт с системой онлайн-бронирования." },
         portal: { title: "ВНУТРЕННИЙ ПОРТАЛ", desc: "Система управления для сотрудников и корпоративных дилеров." },
         storyboard: { title: "ХУДОЖНИК РАСКАДРОВКИ", desc: "Сайт-портфолио для 2D художника раскадровки." },
