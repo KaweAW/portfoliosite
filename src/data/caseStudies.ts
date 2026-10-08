@@ -34,6 +34,45 @@ export const CASE_STUDIES: CaseStudies = {
         "Più di 350 test e una CI che esegue typecheck, lint, test e build a ogni pull request.",
       ],
     },
+    FR: {
+      role: "Conception et développement. Projet personnel, créé pour mon propre groupe de reprises.",
+      challenge:
+        "Les setlists sur papier et les fils de discussion s'effondrent sur scène : qui chante quoi, quelle guitare est accordée en drop D, ce qui vient ensuite sans pause. Le groupe avait besoin d'un seul endroit pour la setlist, les grilles d'accords et la vue de scène, qui continue de fonctionner sans réseau.",
+      solution:
+        "Une application installable qui enregistre tout d'abord sur l'appareil et fonctionne entièrement hors ligne. Le partage est facultatif : on invite les musiciens avec des rôles et la setlist se synchronise en direct entre leurs appareils.",
+      highlights: [
+        "Local-first : chaque modification est d'abord enregistrée dans la base de données du navigateur, puis synchronisée plus tard par une petite file d'attente, si bien qu'un concert n'est jamais interrompu.",
+        "Les permissions sont dans la base de données (row-level security), testées sur un vrai Postgres, y compris les cas où un inconnu ne doit rien pouvoir lire ni écrire.",
+        "Mode scène avec écran sombre, grands accords, écran toujours allumé et défilement automatique, plus export PDF de la setlist.",
+        "Plus de 350 tests et une CI qui exécute typecheck, lint, tests et build à chaque pull request.",
+      ],
+    },
+    DE: {
+      role: "Konzept und Entwicklung. Persönliches Projekt, entstanden für meine eigene Coverband.",
+      challenge:
+        "Setlists auf Papier und geteilte Chat-Verläufe zerfallen auf der Bühne: wer was singt, welche Gitarre in Drop D gestimmt ist, was ohne Pause als Nächstes kommt. Die Band brauchte einen einzigen Ort für Setlist, Akkordblätter und Bühnenansicht, der auch ohne Empfang weiterläuft.",
+      solution:
+        "Eine installierbare App, die alles zuerst auf dem Gerät speichert und vollständig offline funktioniert. Teilen ist optional: Bandkollegen werden mit Rollen eingeladen, und die Setlist synchronisiert sich live zwischen ihren Geräten.",
+      highlights: [
+        "Local-first: Jede Änderung wird zuerst in der Datenbank des Browsers gespeichert und später über eine kleine Warteschlange synchronisiert, sodass ein Auftritt nie unterbrochen wird.",
+        "Die Berechtigungen liegen in der Datenbank (Row-Level Security) und sind gegen ein echtes Postgres getestet, auch für die Fälle, in denen ein Fremder nichts lesen oder schreiben darf.",
+        "Bühnenmodus mit dunklem Bildschirm, großen Akkorden, Bildschirm immer an und automatischem Scrollen, dazu PDF-Export der Setlist.",
+        "Mehr als 350 Tests und eine CI, die bei jedem Pull Request Typecheck, Lint, Tests und Build ausführt.",
+      ],
+    },
+    RU: {
+      role: "Дизайн и разработка. Личный проект, созданный для моей собственной кавер-группы.",
+      challenge:
+        "Бумажные сетлисты и общие чаты рассыпаются на сцене: кто что поёт, какая гитара настроена в drop D, что идёт дальше без паузы. Группе нужно было одно место для сетлиста, аккордов и сценического режима, которое работает даже без сигнала.",
+      solution:
+        "Устанавливаемое приложение, которое сначала сохраняет всё на устройстве и полностью работает офлайн. Совместный доступ необязателен: участников группы приглашают с ролями, и сетлист синхронизируется между их устройствами в реальном времени.",
+      highlights: [
+        "Local-first: каждая правка сначала сохраняется в базе данных браузера, а затем синхронизируется через небольшую очередь, поэтому концерт никогда не прерывается.",
+        "Права доступа заданы в базе данных (row-level security) и проверены на настоящем Postgres, включая случаи, когда посторонний не должен ничего читать и записывать.",
+        "Сценический режим с тёмным экраном, крупными аккордами, экраном, который не гаснет, и автопрокруткой, плюс экспорт сетлиста в PDF.",
+        "Более 350 тестов и CI, который при каждом pull request запускает проверку типов, lint, тесты и сборку.",
+      ],
+    },
   },
   templateZero: {
     EN: {
@@ -60,6 +99,45 @@ export const CASE_STUDIES: CaseStudies = {
         "La home mostra lo stato di apertura in tempo reale e il menu si filtra per dieta e allergeni.",
         "Un modulo di prenotazione con validazione che invia la richiesta via email, più un generatore di QR code per il menu del tavolo.",
         "Uno script di validazione e una checklist di consegna controllano traduzioni, contrasto dei colori e immagini prima del lancio.",
+      ],
+    },
+    FR: {
+      role: "Conception et développement. Un modèle pour restaurants, bars et cafés, présenté avec un client de démonstration.",
+      challenge:
+        "Les petits établissements ont besoin d'un site rapide en plusieurs langues et d'un menu que les clients ouvrent depuis un QR code posé sur la table, sans payer un développement sur mesure à chaque modification.",
+      solution:
+        "Un modèle de site où tout ce qui change d'un client à l'autre se trouve dans des fichiers JSON et des images, de sorte qu'un client ordinaire n'exige aucune modification du code. Le client de démonstration est une trattoria à Munich, en allemand, anglais, italien et français.",
+      highlights: [
+        "Toutes les pages sont statiques, le site est donc rapide sur un téléphone avec une mauvaise connexion.",
+        "La page d'accueil affiche l'état d'ouverture en direct, et le menu se filtre par régime et allergènes.",
+        "Un formulaire de réservation avec validation qui envoie la demande par e-mail, plus un générateur de QR code pour le menu de table.",
+        "Un script de validation et une liste de contrôle de livraison vérifient les traductions, le contraste des couleurs et les images avant la mise en ligne.",
+      ],
+    },
+    DE: {
+      role: "Konzept und Entwicklung. Eine Vorlage für Restaurants, Bars und Cafés, gezeigt mit einem Demokunden.",
+      challenge:
+        "Kleine Lokale brauchen eine schnelle, mehrsprachige Website und eine Speisekarte, die Gäste über einen QR-Code auf dem Tisch öffnen, ohne bei jeder Änderung für individuelle Entwicklung zu zahlen.",
+      solution:
+        "Eine Website-Vorlage, bei der alles, was sich von Kunde zu Kunde unterscheidet, in JSON-Dateien und Bildern liegt, sodass ein normaler Kunde keine Codeänderungen braucht. Der Demokunde ist eine Trattoria in München, auf Deutsch, Englisch, Italienisch und Französisch.",
+      highlights: [
+        "Alle Seiten sind statisch, die Website ist also auch auf einem Handy mit schwacher Verbindung schnell.",
+        "Die Startseite zeigt den aktuellen Öffnungsstatus, und die Speisekarte lässt sich nach Ernährungsweise und Allergenen filtern.",
+        "Ein Reservierungsformular mit Validierung, das die Anfrage per E-Mail verschickt, dazu ein QR-Code-Generator für die Tischkarte.",
+        "Ein Validierungsskript und eine Checkliste für die Übergabe prüfen vor dem Start Übersetzungen, Farbkontrast und Bilder.",
+      ],
+    },
+    RU: {
+      role: "Дизайн и разработка. Шаблон для ресторанов, баров и кафе, показанный на демонстрационном клиенте.",
+      challenge:
+        "Небольшим заведениям нужен быстрый сайт на нескольких языках и меню, которое гости открывают по QR-коду на столе, без оплаты индивидуальной разработки при каждом изменении.",
+      solution:
+        "Шаблон сайта, где всё, что отличается у разных клиентов, хранится в JSON-файлах и изображениях, поэтому обычному клиенту не нужно менять код. Демонстрационный клиент — траттория в Мюнхене, на немецком, английском, итальянском и французском.",
+      highlights: [
+        "Все страницы статические, поэтому сайт быстро работает на телефоне даже при слабом соединении.",
+        "Главная страница показывает текущий статус работы заведения, а меню можно фильтровать по диете и аллергенам.",
+        "Форма бронирования с проверкой данных, которая отправляет заявку по электронной почте, и генератор QR-кода для меню на столе.",
+        "Скрипт проверки и контрольный список сдачи проверяют переводы, контраст цветов и изображения перед запуском.",
       ],
     },
   },
@@ -90,6 +168,45 @@ export const CASE_STUDIES: CaseStudies = {
         "Header di sicurezza (HSTS, content security policy) e HTTPS forzato; componenti accessibili basati su Radix UI e shadcn/ui; Core Web Vitals sopra 95.",
       ],
     },
+    FR: {
+      role: "Conception et développement, de février à août 2025. Projet client.",
+      challenge:
+        "Un médecin ayant des cabinets à Padoue, Vicence, Schio et Malo, qui pratique l'ozonothérapie, l'ostéopathie et la médecine légale, avait besoin d'un site qui explique clairement chaque traitement et que les patients de chaque ville puissent trouver sur Google.",
+      solution:
+        "Un site Next.js avec une page par service, une page de présentation, un blog et un formulaire de contact qui envoie la demande dans la boîte du médecin. Pour la recherche locale, chaque service a sa propre page pour chaque ville où il est proposé, avec des adresses en italien, ses propres métadonnées et des données structurées.",
+      highlights: [
+        "17 pages locales générées à partir d'un seul fichier de configuration des villes et des services : ajouter une ville est une modification des données, pas du code.",
+        "SEO technique soigné page par page : sitemap, robots.txt, balises canonical et sociales, et données structurées pour le cabinet et le médecin.",
+        "Formulaire de contact avec une route d'API qui envoie un e-mail au médecin, plus un bandeau de cookies et des statistiques.",
+        "En-têtes de sécurité (HSTS, politique de sécurité du contenu) et HTTPS forcé ; composants accessibles basés sur Radix UI et shadcn/ui ; Core Web Vitals au-dessus de 95.",
+      ],
+    },
+    DE: {
+      role: "Konzept und Entwicklung, von Februar bis August 2025. Kundenprojekt.",
+      challenge:
+        "Ein Arzt mit Praxen in Padua, Vicenza, Schio und Malo, der Ozontherapie, Osteopathie und Rechtsmedizin anbietet, brauchte eine Website, die jede Behandlung klar erklärt und die Patienten in jeder Stadt über Google finden können.",
+      solution:
+        "Eine Next.js-Website mit einer Seite pro Leistung, einer Über-mich-Seite, einem Blog und einem Kontaktformular, das die Anfrage an das Postfach des Arztes schickt. Für die lokale Suche hat jede Leistung eine eigene Seite für jede Stadt, in der sie angeboten wird, mit italienischen Adressen, eigenen Metadaten und strukturierten Daten.",
+      highlights: [
+        "17 lokale Landingpages aus einer einzigen Konfigurationsdatei für Städte und Leistungen: Eine neue Stadt hinzuzufügen ist eine Änderung an Daten, nicht am Code.",
+        "Technische SEO Seite für Seite: Sitemap, robots.txt, Canonical- und Social-Tags sowie strukturierte Daten für die Praxis und den Arzt.",
+        "Kontaktformular mit einer API-Route, die dem Arzt eine E-Mail schickt, dazu ein Cookie-Banner und Analytics.",
+        "Sicherheits-Header (HSTS, Content Security Policy) und erzwungenes HTTPS; zugängliche Komponenten auf Basis von Radix UI und shadcn/ui; Core Web Vitals über 95.",
+      ],
+    },
+    RU: {
+      role: "Дизайн и разработка, с февраля по август 2025 года. Клиентский проект.",
+      challenge:
+        "Врачу с кабинетами в Падуе, Виченце, Скио и Мало, который занимается озонотерапией, остеопатией и судебной медициной, нужен был сайт, ясно объясняющий каждое лечение, который пациенты из каждого города могли бы найти в Google.",
+      solution:
+        "Сайт на Next.js со страницей для каждой услуги, страницей «Обо мне», блогом и формой обратной связи, которая отправляет запрос на почту врача. Для локального поиска у каждой услуги есть отдельная страница для каждого города, где она доступна, с адресами на итальянском, собственными метаданными и структурированными данными.",
+      highlights: [
+        "17 локальных страниц, созданных из одного конфигурационного файла городов и услуг: добавить город — значит изменить данные, а не код.",
+        "Техническое SEO, проработанное постранично: карта сайта, robots.txt, canonical- и социальные теги, структурированные данные для практики и врача.",
+        "Форма обратной связи с API-маршрутом, который отправляет письмо врачу, а также баннер cookie и аналитика.",
+        "Заголовки безопасности (HSTS, политика безопасности контента) и принудительный HTTPS; доступные компоненты на основе Radix UI и shadcn/ui; Core Web Vitals выше 95.",
+      ],
+    },
   },
   portal: {
     EN: {
@@ -118,6 +235,45 @@ export const CASE_STUDIES: CaseStudies = {
         "Ogni build esegue prima lint e controllo dei tipi; tema chiaro e scuro, e navigazione che segue il ruolo dell'utente.",
       ],
     },
+    FR: {
+      role: "Ingénieur frontend chez STIGA, depuis juin 2025, dans une équipe Agile internationale.",
+      challenge:
+        "Employés et revendeurs utilisaient un portail interne pour gérer les appareils, les revendeurs, les campagnes marketing et les utilisateurs, mais une partie reposait sur d'anciens composants web lents à charger et difficiles à modifier.",
+      solution:
+        "J'ai reconstruit ces parties sous forme de composants React et TypeScript modulaires et je les ai reliées aux API REST avec une validation stricte des données, en travaillant avec les ingénieurs backend par sprints de deux semaines.",
+      highlights: [
+        "Plus de 12 anciens composants refactorisés en React et TypeScript modulaires, avec des temps de chargement réduits d'environ 20 % pour plus de 100 personnes qui utilisent le portail chaque jour.",
+        "Les données des API sont validées en TypeScript avec Zod : les réponses inattendues sont interceptées au lieu de casser l'interface à l'exécution.",
+        "Interface en plusieurs langues, avec des traductions synchronisées depuis un service de traduction lors du build, et des environnements de test et de production séparés.",
+        "Chaque build commence par le lint et la vérification des types ; thème clair et sombre, et navigation selon le rôle de l'utilisateur.",
+      ],
+    },
+    DE: {
+      role: "Frontend-Engineer bei STIGA, seit Juni 2025, in einem internationalen agilen Team.",
+      challenge:
+        "Mitarbeitende und Händler nutzten ein internes Portal, um Geräte, Händler, Marketingkampagnen und Benutzer zu verwalten, aber ein Teil bestand aus älteren Web-Komponenten, die langsam luden und schwer zu ändern waren.",
+      solution:
+        "Ich habe diese Teile als modulare React- und TypeScript-Komponenten neu gebaut und mit strikter Datenvalidierung an die REST-APIs angebunden, gemeinsam mit den Backend-Entwicklern in Zwei-Wochen-Sprints.",
+      highlights: [
+        "Mehr als 12 Legacy-Komponenten in modulares React und TypeScript überführt, wodurch die Ladezeit für über 100 Personen, die das Portal täglich nutzen, um etwa 20 % sank.",
+        "Daten aus den APIs werden in TypeScript mit Zod validiert, sodass unerwartete Antworten abgefangen werden, statt zur Laufzeit die Oberfläche zu zerstören.",
+        "Oberfläche in mehreren Sprachen mit Übersetzungen, die beim Build aus einem Übersetzungsdienst synchronisiert werden, sowie getrennte Test- und Produktionsumgebungen.",
+        "Jeder Build beginnt mit Lint und Typprüfung; helles und dunkles Theme sowie eine Navigation, die der Rolle des Benutzers folgt.",
+      ],
+    },
+    RU: {
+      role: "Frontend-инженер в STIGA с июня 2025 года, в международной команде Agile.",
+      challenge:
+        "Сотрудники и дилеры пользовались внутренним порталом для управления устройствами, дилерами, маркетинговыми кампаниями и пользователями, но часть портала была построена на устаревших веб-компонентах, которые медленно загружались и с трудом поддавались изменениям.",
+      solution:
+        "Я переписал эти части в виде модульных компонентов на React и TypeScript и подключил их к REST API со строгой проверкой данных, работая с backend-инженерами в двухнедельных спринтах.",
+      highlights: [
+        "Более 12 устаревших компонентов переработано в модульные React и TypeScript, время загрузки сократилось примерно на 20 % для более чем 100 человек, которые пользуются порталом каждый день.",
+        "Данные из API проверяются в TypeScript с помощью Zod, поэтому неожиданные ответы перехватываются, а не ломают интерфейс во время работы.",
+        "Интерфейс на нескольких языках, переводы синхронизируются из сервиса переводов при сборке; тестовая и боевая среды разделены.",
+        "Каждая сборка начинается с lint и проверки типов; светлая и тёмная темы, навигация зависит от роли пользователя.",
+      ],
+    },
   },
   storyboard: {
     EN: {
@@ -142,6 +298,42 @@ export const CASE_STUDIES: CaseStudies = {
         "Vetrina video con player Vimeo che si aprono da una scheda.",
         "Gallerie di storyboard con un visualizzatore che supporta avanti, indietro e swipe da telefono.",
         "Le basi per i motori di ricerca fatte bene: sitemap, schede Open Graph e dati strutturati per la persona.",
+      ],
+    },
+    FR: {
+      role: "Conception et développement. Réalisé pour un animateur 2D et story artist.",
+      challenge:
+        "Un animateur 2D et story artist qui a travaillé avec des studios comme Disney, Netflix et Fox Animation avait besoin d'un portfolio qui présente bien ses reels et ses storyboards et que les moteurs de recherche puissent indexer.",
+      solution:
+        "Un site avec une page par section (biographie, animation, storyboard, projets personnels, CV et contacts), chacune avec son propre titre, sa description et son adresse. Il est disponible en anglais et en italien et propose un CV à télécharger.",
+      highlights: [
+        "Vitrine vidéo avec des lecteurs Vimeo ouverts depuis une carte.",
+        "Galeries de storyboards avec une visionneuse qui gère suivant, précédent et le balayage sur téléphone.",
+        "Les bases pour les moteurs de recherche bien faites : sitemap, cartes Open Graph et données structurées pour la personne.",
+      ],
+    },
+    DE: {
+      role: "Konzept und Entwicklung. Entstanden für einen 2D-Animator und Story Artist.",
+      challenge:
+        "Ein 2D-Animator und Story Artist, der mit Studios wie Disney, Netflix und Fox Animation gearbeitet hat, brauchte ein Portfolio, das seine Reels und Storyboards gut zeigt und das Suchmaschinen indexieren können.",
+      solution:
+        "Eine Website mit einer Seite pro Bereich (Biografie, Animation, Storyboard, persönliche Projekte, Lebenslauf und Kontakt), jeweils mit eigenem Titel, eigener Beschreibung und eigener Adresse. Sie ist auf Englisch und Italienisch verfügbar und bietet einen Lebenslauf zum Download.",
+      highlights: [
+        "Video-Showcase mit Vimeo-Playern, die aus einer Karte heraus geöffnet werden.",
+        "Storyboard-Galerien mit einem Viewer, der Weiter, Zurück und Wischen auf dem Handy unterstützt.",
+        "Suchmaschinen-Grundlagen sauber umgesetzt: Sitemap, Open-Graph-Karten und strukturierte Daten für die Person.",
+      ],
+    },
+    RU: {
+      role: "Дизайн и разработка. Создано для 2D-аниматора и сторибордера.",
+      challenge:
+        "2D-аниматору и сторибордеру, работавшему со студиями вроде Disney, Netflix и Fox Animation, нужно было портфолио, которое хорошо показывает его ролики и сториборды и которое могут индексировать поисковые системы.",
+      solution:
+        "Сайт с отдельной страницей для каждого раздела (биография, анимация, сториборд, личные проекты, резюме и контакты), у каждой — свои заголовок, описание и адрес. Он доступен на английском и итальянском, есть резюме для скачивания.",
+      highlights: [
+        "Видеовитрина с плеерами Vimeo, которые открываются из карточки.",
+        "Галереи сторибордов с просмотрщиком, поддерживающим «вперёд», «назад» и свайп на телефоне.",
+        "Основы для поисковых систем сделаны как надо: карта сайта, карточки Open Graph и структурированные данные о человеке.",
       ],
     },
   },
