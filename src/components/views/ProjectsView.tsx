@@ -6,7 +6,7 @@ import { useLayout } from "../../hooks/useLayout"
 import { usePreviewActions } from "../../hooks/usePreview"
 import type { Project } from "../../types"
 import { PageHeader, PageShell } from "../ui/PageShell"
-import { ParallaxImage } from "../ui/ParallaxImage"
+import { ScreenshotImage } from "../ui/ScreenshotImage"
 
 interface ProjectRowProps {
   project: Project
@@ -25,9 +25,9 @@ const ProjectRow = ({ project, index, scrollRef }: ProjectRowProps) => {
         href={project.url}
         target="_blank"
         rel="noreferrer"
-        onMouseEnter={() => show(project.image)}
+        onMouseEnter={() => show(project.image.src)}
         onMouseLeave={hide}
-        onFocus={() => show(project.image)}
+        onFocus={() => show(project.image.src)}
         onBlur={hide}
         className="group relative flex flex-col justify-between border-b border-white/10 px-2 py-6 transition-colors duration-300 focus-visible:bg-white focus-visible:text-black active:bg-white active:text-black md:px-4 md:py-10 md:hover:bg-white md:hover:text-black"
       >
@@ -45,7 +45,7 @@ const ProjectRow = ({ project, index, scrollRef }: ProjectRowProps) => {
           </div>
         </div>
 
-        <ParallaxImage src={project.image} containerRef={scrollRef} />
+        <ScreenshotImage image={project.mobileImage ?? project.image} containerRef={scrollRef} />
         <span className="sr-only">{t.a11y.opensInNewTab}</span>
       </a>
     </motion.li>
