@@ -4,6 +4,7 @@ import { useLayout } from "../hooks/useLayout"
 import type { ViewId } from "../routes"
 import { ContactView } from "./views/ContactView"
 import { HomeView } from "./views/HomeView"
+import { ProjectDetailView } from "./views/ProjectDetailView"
 import { ProjectsView } from "./views/ProjectsView"
 import { TimelineView } from "./views/TimelineView"
 
@@ -15,13 +16,13 @@ const VIEWS: Record<ViewId, ComponentType> = {
 }
 
 export const ViewRouter = () => {
-  const { view, language } = useLayout()
-  const View = VIEWS[view]
+  const { view, project, language } = useLayout()
+  const View = project ? ProjectDetailView : VIEWS[view]
 
   return (
     <AnimatePresence mode="wait">
       {/* Keyed by language too, so switching language replays the transition. */}
-      <View key={`${view}-${language}`} />
+      <View key={`${view}-${project?.id ?? ""}-${language}`} />
     </AnimatePresence>
   )
 }
