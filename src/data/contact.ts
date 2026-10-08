@@ -1,11 +1,7 @@
 import type { Language } from "../types"
 
 export const CONTACT = {
-  /** Digits only, used for tel: links. */
-  phone: "+393780639622",
-  phoneDisplay: "+39 378 0639 622",
   email: "kawe.longon@gmail.com",
-  whatsapp: "https://wa.me/393780639622",
   github: "https://github.com/KaweAW",
   githubDisplay: "github.com/KaweAW",
   linkedin: "https://www.linkedin.com/in/kawe-longon-810b94248/",

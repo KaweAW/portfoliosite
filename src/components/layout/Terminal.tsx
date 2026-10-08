@@ -97,8 +97,6 @@ const COMMANDS: Record<string, Command> = {
     help: "how to reach me",
     run: () => [
       `${pad("email", 10)}${CONTACT.email}`,
-      `${pad("phone", 10)}${CONTACT.phoneDisplay}`,
-      `${pad("whatsapp", 10)}${CONTACT.whatsapp}`,
       `${pad("github", 10)}${CONTACT.githubDisplay}`,
       `${pad("linkedin", 10)}${CONTACT.linkedinDisplay}`,
     ],

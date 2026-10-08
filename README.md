@@ -11,7 +11,6 @@ A minimalist, brutalist-inspired interactive portfolio built with **React 19**, 
 - **Desktop floating previews:** the desktop screenshot follows the cursor on hover (and keyboard focus) with a spring.
 - **Real URLs:** `/`, `/projects`, `/projects/<project>`, `/timeline` and `/contact`. Old `/#/projects` links are redirected. The build writes one HTML file per page with its own title, description, canonical link and social preview, plus `sitemap.xml` and `robots.txt` (`vite-plugins/seo.ts`).
 - **Case study page per project:** challenge, solution, highlights, role, stack and links to the live site and the source code. Text is in all five languages.
-- **Hover videos:** the desktop preview plays a short silent WebM loop (loaded only on hover, skipped for visitors who prefer reduced motion).
 - **Terminal:** press `/` (or tap `>_` on a phone) and type `help`. Loaded as a separate chunk only when opened.
 - **Scramble text effect:** text decoding animation for titles. Screen readers get the real text, and it is skipped for visitors who prefer reduced motion.
 - **Five languages (EN, IT, FR, DE, RU):** picked from the browser language on first visit, remembered afterwards. Dates are formatted per language with `Intl`.
@@ -39,7 +38,7 @@ npm run preview    # serve the production build locally
 ## Project structure
 
 ```text
-├── public/                    # Static assets (images WebP, hover videos in video/, og-image.jpg, _redirects)
+├── public/                    # Static assets (images WebP, og-image.jpg, _redirects)
 ├── vite-plugins/seo.ts        # Per-page HTML, sitemap and robots.txt at build time
 └── src/
     ├── animations/            # Framer Motion variants
@@ -63,7 +62,7 @@ Content that does not change between languages (URLs, images, dates) lives in `d
 **A project**
 
 1. Add its id to `ProjectId` in `src/types.ts`.
-2. Add `{ id, slug, url, repo?, stack, image, mobileImage?, video? }` to `src/data/projects.ts` (images are `{ src, width, height }`). Put the desktop picture in `public/` (WebP, 1400x840); `mobileImage` is an optional phone picture, and without it mobile shows the desktop one. `video` is an optional WebM loop in `public/video/`.
+2. Add `{ id, slug, url, repo?, stack, image, mobileImage? }` to `src/data/projects.ts` (images are `{ src, width, height }`). Put the desktop picture in `public/` (WebP, 1400x840); `mobileImage` is an optional phone picture, and without it mobile shows the desktop one.
 3. Add `title` and `desc` under `projects.items` for every language in `src/data/translations.ts`.
 4. Add the case study text in `src/data/caseStudies.ts` (English is required, every other language falls back to it when missing).
 

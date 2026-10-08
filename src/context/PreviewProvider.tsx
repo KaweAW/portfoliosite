@@ -7,11 +7,11 @@ import {
 } from "./preview-context"
 
 export const PreviewProvider = ({ children }: { children: ReactNode }) => {
-  const [state, setState] = useState<PreviewState>({ src: null, video: null, visible: false })
+  const [state, setState] = useState<PreviewState>({ src: null, visible: false })
 
   const actions = useMemo<PreviewActions>(
     () => ({
-      show: (src, video) => setState({ src, video: video ?? null, visible: true }),
+      show: (src) => setState({ src, visible: true }),
       // Returning the same object skips the re-render when nothing was visible.
       hide: () => setState((prev) => (prev.visible ? { ...prev, visible: false } : prev)),
     }),
