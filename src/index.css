@@ -1,11 +1,17 @@
 @import "tailwindcss";
 
 @layer base {
-  body {
-    @apply bg-black text-white font-mono uppercase tracking-tighter;
+  html {
+    color-scheme: dark;
   }
-}
 
-.glitch-text {
-  @apply relative;
+  body {
+    @apply overflow-x-hidden bg-black font-mono tracking-tighter text-white uppercase antialiased;
+  }
+
+  /* Brutalist focus ring that stays visible on both black and white (inverted) backgrounds. */
+  :focus-visible {
+    outline: 1px dashed currentColor;
+    outline-offset: 4px;
+  }
 }
