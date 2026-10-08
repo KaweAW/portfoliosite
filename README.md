@@ -10,7 +10,7 @@ A minimalist, brutalist-inspired interactive portfolio built with **React 19**, 
 - **Mobile screenshots:** each project shows a phone-sized screenshot on mobile (tall ones scroll through as you scroll). Rendered only on mobile, so desktop never pays for it.
 - **Desktop floating previews:** the desktop screenshot follows the cursor on hover (and keyboard focus) with a spring.
 - **Real URLs:** `/`, `/projects`, `/projects/<project>`, `/timeline` and `/contact`. Old `/#/projects` links are redirected. The build writes one HTML file per page with its own title, description, canonical link and social preview, plus `sitemap.xml` and `robots.txt` (`vite-plugins/seo.ts`).
-- **Case study page per project:** challenge, solution, highlights, role, stack and links to the live site and the source code. Text is in English and Italian; other languages fall back to English.
+- **Case study page per project:** challenge, solution, highlights, role, stack and links to the live site and the source code. Text is in all five languages.
 - **Hover videos:** the desktop preview plays a short silent WebM loop (loaded only on hover, skipped for visitors who prefer reduced motion).
 - **Terminal:** press `/` (or tap `>_` on a phone) and type `help`. Loaded as a separate chunk only when opened.
 - **Scramble text effect:** text decoding animation for titles. Screen readers get the real text, and it is skipped for visitors who prefer reduced motion.
@@ -65,7 +65,7 @@ Content that does not change between languages (URLs, images, dates) lives in `d
 1. Add its id to `ProjectId` in `src/types.ts`.
 2. Add `{ id, slug, url, repo?, stack, image, mobileImage?, video? }` to `src/data/projects.ts` (images are `{ src, width, height }`). Put the desktop picture in `public/` (WebP, 1400x840); `mobileImage` is an optional phone picture, and without it mobile shows the desktop one. `video` is an optional WebM loop in `public/video/`.
 3. Add `title` and `desc` under `projects.items` for every language in `src/data/translations.ts`.
-4. Add the case study text in `src/data/caseStudies.ts` (English is required, other languages are optional).
+4. Add the case study text in `src/data/caseStudies.ts` (English is required, every other language falls back to it when missing).
 
 TypeScript reports an error until every language has the new entry. Timeline entries work the same way with `TimelineId`, `data/timeline.ts` and `timeline.items`.
 
