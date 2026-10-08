@@ -6,6 +6,10 @@ export const CONTACT = {
   phoneDisplay: "+39 378 0639 622",
   email: "kawe.longon@gmail.com",
   whatsapp: "https://wa.me/393780639622",
+  github: "https://github.com/KaweAW",
+  githubDisplay: "github.com/KaweAW",
+  linkedin: "https://www.linkedin.com/in/kawe-longon-810b94248/",
+  linkedinDisplay: "linkedin.com/in/kawe-longon",
 } as const
 
 const ITALIAN_RESUME = "cv_kawe_longon.pdf"

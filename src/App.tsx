@@ -5,6 +5,7 @@ import { LanguageSwitcher } from "./components/layout/LanguageSwitcher"
 import { Navigation } from "./components/layout/Navigation"
 import { SkipLink } from "./components/layout/SkipLink"
 import { StatusBadge } from "./components/layout/StatusBadge"
+import { TerminalLauncher } from "./components/layout/TerminalLauncher"
 import { ViewRouter } from "./components/ViewRouter"
 import { LayoutProvider } from "./context/LayoutProvider"
 import { PreviewProvider } from "./context/PreviewProvider"
@@ -24,6 +25,7 @@ export default function App() {
             <CustomCursor pointer={pointer} />
             <LanguageSwitcher />
             <Navigation />
+            <TerminalLauncher />
 
             <main
               id={MAIN_ID}

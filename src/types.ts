@@ -15,11 +15,28 @@ export interface ProjectImage {
 
 export interface Project {
   id: ProjectId
+  /** URL segment of the case study page: `/projects/<slug>`. */
+  slug: string
+  /** The live site. */
   url: string
+  /** Public source code, when there is one. */
+  repo?: string
+  /** Technologies used. Left empty when unknown, and then the list is not shown. */
+  stack: readonly string[]
   /** Desktop screenshot: shown in the cursor-following preview on hover. */
   image: ProjectImage
   /** Phone-sized screenshot for small screens. Falls back to `image` when missing. */
   mobileImage?: ProjectImage
+  /** Short silent loop played in the desktop hover preview (WebM, loaded only on hover). */
+  video?: string
+}
+
+/** Text of a project's case study page. */
+export interface CaseStudyCopy {
+  role: string
+  challenge: string
+  solution: string
+  highlights: readonly string[]
 }
 
 export type TimelineId =
@@ -76,6 +93,23 @@ export interface Translation {
       whatsapp: string
       startChat: string
     }
+  }
+  projectPage: {
+    back: string
+    role: string
+    stack: string
+    challenge: string
+    solution: string
+    highlights: string
+    liveSite: string
+    repository: string
+    caseStudy: string
+  }
+  terminal: {
+    open: string
+    close: string
+    label: string
+    hint: string
   }
   a11y: {
     skipToContent: string

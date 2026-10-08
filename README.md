@@ -9,7 +9,10 @@ A minimalist, brutalist-inspired interactive portfolio built with **React 19**, 
 - **Brutalist & minimalist UI:** dark by default, monospace typography, grid-based layout.
 - **Mobile screenshots:** each project shows a phone-sized screenshot on mobile (tall ones scroll through as you scroll). Rendered only on mobile, so desktop never pays for it.
 - **Desktop floating previews:** the desktop screenshot follows the cursor on hover (and keyboard focus) with a spring.
-- **URL-based views:** Home, Work, Timeline and Info live in the URL hash (`#/projects`, `#/timeline`, `#/contact`), so deep links and the browser back button work.
+- **Real URLs:** `/`, `/projects`, `/projects/<project>`, `/timeline` and `/contact`. Old `/#/projects` links are redirected. The build writes one HTML file per page with its own title, description, canonical link and social preview, plus `sitemap.xml` and `robots.txt` (`vite-plugins/seo.ts`).
+- **Case study page per project:** challenge, solution, highlights, role, stack and links to the live site and the source code. Text is in English and Italian; other languages fall back to English.
+- **Hover videos:** the desktop preview plays a short silent WebM loop (loaded only on hover, skipped for visitors who prefer reduced motion).
+- **Terminal:** press `/` (or tap `>_` on a phone) and type `help`. Loaded as a separate chunk only when opened.
 - **Scramble text effect:** text decoding animation for titles. Screen readers get the real text, and it is skipped for visitors who prefer reduced motion.
 - **Five languages (EN, IT, FR, DE, RU):** picked from the browser language on first visit, remembered afterwards. Dates are formatted per language with `Intl`.
 - **Resume download:** Italian or English PDF depending on the selected language.
@@ -36,19 +39,20 @@ npm run preview    # serve the production build locally
 ## Project structure
 
 ```text
-├── public/                    # Static assets (images are WebP, max 1400px wide)
+├── public/                    # Static assets (images WebP, hover videos in video/, og-image.jpg, _redirects)
+├── vite-plugins/seo.ts        # Per-page HTML, sitemap and robots.txt at build time
 └── src/
     ├── animations/            # Framer Motion variants
     ├── components/
-    │   ├── layout/            # Cursor, language switcher, navigation, hover preview, skip link
-    │   ├── ui/                # PageShell, ParallaxImage, ScreenshotImage, ScrambleText
-    │   ├── views/             # HomeView, ProjectsView, TimelineView, ContactView
-    │   └── ViewRouter.tsx     # Picks the view for the current URL hash
+    │   ├── layout/            # Cursor, language switcher, navigation, hover preview, terminal, skip link
+    │   ├── ui/                # Link, PageShell, ParallaxImage, ScreenshotImage, ScrambleText
+    │   ├── views/             # HomeView, ProjectsView, ProjectDetailView, TimelineView, ContactView
+    │   └── ViewRouter.tsx     # Picks the view for the current URL
     ├── context/               # Layout (view + language + copy) and hover-preview state
     ├── data/                  # Content: projects, timeline, contact, translations, languages
-    ├── hooks/                 # useLayout, useHashView, usePointer, useMediaQuery, usePreview
+    ├── hooks/                 # useLayout, useRoute, usePointer, useMediaQuery, usePreview
     ├── lib/                   # cn, date formatting, language detection/persistence
-    ├── routes.ts              # View ids and their URL hashes
+    ├── routes.ts              # View ids and their URL paths
     └── types.ts               # Shared types (Translation, Project, TimelineEntry, ...)
 ```
 
@@ -59,8 +63,9 @@ Content that does not change between languages (URLs, images, dates) lives in `d
 **A project**
 
 1. Add its id to `ProjectId` in `src/types.ts`.
-2. Add `{ id, url, image, mobileImage? }` to `src/data/projects.ts` (images are `{ src, width, height }`). Put the desktop screenshot in `public/` (WebP, about 1400px wide); `mobileImage` is an optional phone screenshot, and without it mobile shows the desktop one.
+2. Add `{ id, slug, url, repo?, stack, image, mobileImage?, video? }` to `src/data/projects.ts` (images are `{ src, width, height }`). Put the desktop picture in `public/` (WebP, 1400x840); `mobileImage` is an optional phone picture, and without it mobile shows the desktop one. `video` is an optional WebM loop in `public/video/`.
 3. Add `title` and `desc` under `projects.items` for every language in `src/data/translations.ts`.
+4. Add the case study text in `src/data/caseStudies.ts` (English is required, other languages are optional).
 
 TypeScript reports an error until every language has the new entry. Timeline entries work the same way with `TimelineId`, `data/timeline.ts` and `timeline.items`.
 
@@ -75,3 +80,7 @@ TypeScript reports an error until every language has the new entry. Timeline ent
 - Mouse tracking uses Framer Motion values, so moving the mouse does not re-render React.
 - Mobile parallax images are lazy-loaded and only mounted on mobile; the hover preview image loads on first hover.
 - Only two runtime dependencies besides React: `framer-motion` and `clsx`.
+
+## Deploying on Netlify
+
+`public/_redirects` sends unknown paths to `index.html`, so a deep link such as `/projects/scaletta` works even for pages that are not pre-generated. The site address used in canonical links, the sitemap and social previews is `SITE_URL` in `src/data/site.ts`: change it if the domain changes.
