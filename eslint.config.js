@@ -19,4 +19,11 @@ export default defineConfig([
       globals: globals.browser,
     },
   },
+  {
+    // Netlify functions run on Node, not in the browser.
+    files: ['netlify/**/*.ts'],
+    languageOptions: {
+      globals: globals.node,
+    },
+  },
 ])
