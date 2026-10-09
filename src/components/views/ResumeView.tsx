@@ -39,11 +39,11 @@ export const ResumeView = () => {
   // Read once, so the length of the current job does not change between renders.
   const [now] = useState(() => new Date())
 
-  const range = (start: MonthYear, end?: MonthYear) => (
+  const range = (start: MonthYear, end?: MonthYear, ongoing = true) => (
     <p className="text-[10px] tracking-widest text-neutral-500 md:text-xs">
       <time dateTime={toDateTime(start)}>{formatMonthYear(locale, start)}</time>
-      {" – "}
-      {end ? <time dateTime={toDateTime(end)}>{formatMonthYear(locale, end)}</time> : copy.experience.present}
+      {(end || ongoing) && " – "}
+      {end ? <time dateTime={toDateTime(end)}>{formatMonthYear(locale, end)}</time> : ongoing && copy.experience.present}
     </p>
   )
 
@@ -98,7 +98,7 @@ export const ResumeView = () => {
                 <li key={item.id} className="border border-white/20 p-4 transition-colors hover:border-white/50 md:p-5">
                   <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
                     <h3 className="text-lg font-bold tracking-tighter md:text-xl">{text.title}</h3>
-                    {range(item.start, item.end)}
+                    {range(item.start, item.end, item.ongoing ?? false)}
                   </div>
                   <p className="mt-1 text-[10px] tracking-widest text-neutral-400 md:text-xs">{text.kind}</p>
                   <div className="mt-4">

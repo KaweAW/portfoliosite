@@ -10,6 +10,8 @@ export interface ResumeExperience {
   start: MonthYear
   /** Missing while the job is ongoing. */
   end?: MonthYear
+  /** Still in development: shows "– today" instead of only the start date. */
+  ongoing?: true
   stack: readonly string[]
 }
 
@@ -27,13 +29,15 @@ export interface ResumeProject {
   projectId?: ProjectId
   start: MonthYear
   end?: MonthYear
+  /** Still in development: shows "– today" instead of only the start date. */
+  ongoing?: true
   stack: readonly string[]
   /** Public source code, for the projects that are not in the Work section. */
   code?: string
 }
 
 export const RESUME_PROJECTS: readonly ResumeProject[] = [
-  { id: "scaletta", projectId: "scaletta", start: { year: 2026, month: 10 }, stack: ["React", "TypeScript", "Dexie", "Supabase"] },
+  { id: "scaletta", projectId: "scaletta", start: { year: 2026, month: 10 }, ongoing: true, stack: ["React", "TypeScript", "Dexie", "Supabase"] },
   { id: "templateZero", projectId: "templateZero", start: { year: 2026, month: 10 }, stack: ["Next.js 15", "TypeScript", "Tailwind 4"] },
   {
     id: "medical",

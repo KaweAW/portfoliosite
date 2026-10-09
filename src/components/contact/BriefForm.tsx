@@ -1,6 +1,8 @@
 import { useId, useState, type FormEvent, type ReactNode } from "react"
 import { AnimatePresence, motion } from "framer-motion"
 import { CONTACT } from "../../data/contact"
+import { localeFor } from "../../data/languages"
+import { formatEuro } from "../../lib/formatNumber"
 import { useLayout } from "../../hooks/useLayout"
 import { cn } from "../../lib/cn"
 import type { BriefFieldId } from "../../types"
@@ -22,7 +24,8 @@ const DROPDOWNS: readonly { id: BriefFieldId; multiple?: boolean }[] = [
   { id: "legal", multiple: true },
 ]
 
-const euro = (value: number) => `€ ${value.toLocaleString("en-US")}`
+/** What gets sent in the email: always the same format, whatever language the visitor uses. */
+const plainEuro = (value: number) => `€ ${value.toLocaleString("en-US")}`
 
 const fieldClass =
   "w-full border border-white/30 bg-transparent px-3 py-2 text-sm normal-case tracking-normal text-white placeholder:text-neutral-500 focus:border-white focus:outline-none"
@@ -44,8 +47,9 @@ type Status = "idle" | "sending" | "sent" | "error"
  * needs no server of our own. If sending fails, the visitor is pointed to the email address.
  */
 export const BriefForm = () => {
-  const { t } = useLayout()
+  const { t, language } = useLayout()
   const copy = t.contact.form
+  const euro = (value: number) => formatEuro(localeFor(language), value)
   const id = useId()
   const [status, setStatus] = useState<Status>("idle")
   const [budget, setBudget] = useState<number | null>(null)
@@ -58,7 +62,7 @@ export const BriefForm = () => {
     const data = new FormData(event.currentTarget)
     const body = new URLSearchParams({ "form-name": "brief" })
     for (const [key, value] of data) if (typeof value === "string") body.set(key, value)
-    body.set("budget", budget === null ? "" : euro(budget))
+    body.set("budget", budget === null ? "" : plainEuro(budget))
 
     setStatus("sending")
     try {
@@ -214,7 +218,6 @@ export const BriefForm = () => {
       <button
         type="submit"
         disabled={status === "sending"}
-        data-cursor={copy.send}
         className="group flex cursor-pointer items-stretch self-end text-sm font-bold tracking-widest disabled:opacity-50"
       >
         <span className="flex items-center border border-white px-6 py-3 transition-colors group-hover:bg-white group-hover:text-black group-focus-visible:bg-white group-focus-visible:text-black">

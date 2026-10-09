@@ -2,7 +2,6 @@ import { useId } from "react"
 import { motion } from "framer-motion"
 import { useLayout } from "../../hooks/useLayout"
 import { useTheme } from "../../hooks/useTheme"
-import { setHoverLabel } from "../../lib/cursor"
 
 const SPRING = { type: "spring", stiffness: 140, damping: 18 } as const
 
@@ -16,13 +15,8 @@ export const ThemeToggle = () => {
   return (
     <button
       type="button"
-      onClick={() => {
-        toggle()
-        // The label describes what the next click does, so it changes with the theme.
-        setHoverLabel(moon ? "DARK" : "LIGHT")
-      }}
+      onClick={toggle}
       aria-label={moon ? t.a11y.themeToLight : t.a11y.themeToDark}
-      data-cursor={moon ? "LIGHT" : "DARK"}
       className="flex h-6 w-6 cursor-pointer items-center justify-center text-white transition-colors md:text-invert"
     >
       <motion.svg

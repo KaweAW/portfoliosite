@@ -62,7 +62,6 @@ export const ResumeHero = () => {
             <a
               href={`/${file}`}
               download={file}
-              data-cursor="SAVE ↓"
               className="inline-flex items-center gap-2 bg-white px-4 py-3 text-[10px] font-bold tracking-widest text-black transition-opacity hover:opacity-80 md:text-xs"
             >
               {copy.download} <span aria-hidden="true">↓</span>
