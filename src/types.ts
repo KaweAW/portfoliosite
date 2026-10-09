@@ -37,27 +37,15 @@ export interface CaseStudyCopy {
   highlights: readonly string[]
 }
 
-export type TimelineId =
-  | "liceo"
-  | "julia"
-  | "indonesia"
-  | "itsStart"
-  | "firstSite"
-  | "stiga"
-  | "itsDiploma"
+export type ExperienceId = "stiga"
+export type ResumeProjectId = "scaletta" | "templateZero" | "medical" | "storyboard" | "shoes"
+export type EducationId = "its" | "liceo"
+export type SkillGroupId = "frontend" | "backend" | "mobile" | "quality"
 
 export interface MonthYear {
   year: number
   /** 1-12 */
   month: number
-}
-
-export interface TimelineEntry {
-  id: TimelineId
-  start: MonthYear
-  /** When true the entry is shown as "<start> - ONGOING". */
-  ongoing?: boolean
-  image: string
 }
 
 /* ---------- Translated copy ---------- */
@@ -67,20 +55,34 @@ export interface ItemCopy {
   desc: string
 }
 
+export type BriefFieldId =
+  | "projectType"
+  | "features"
+  | "technologies"
+  | "assets"
+  | "audience"
+  | "hosting"
+  | "support"
+  | "legal"
+  | "priority"
+
+/** Label, placeholder and choices of one dropdown of the project brief. */
+export interface BriefFieldCopy {
+  label: string
+  placeholder: string
+  options: readonly string[]
+}
+
 export interface Translation {
   home: { subtitle: string }
-  nav: Record<ViewId, string>
+  nav: Record<ViewId, string> & {
+    /** Shorter label of the Resume link, used on small screens where the menu is tight. */
+    resumeShort: string
+  }
   projects: {
     title: string
     dir: string
     items: Record<ProjectId, ItemCopy>
-  }
-  timeline: {
-    title: string
-    ongoing: string
-    /** Accessible name of the overview axis above the list. */
-    axis: string
-    items: Record<TimelineId, ItemCopy>
   }
   contact: {
     title: string
@@ -96,7 +98,6 @@ export interface Translation {
       copyJokes: readonly string[]
       linkedinHint: string
       githubHint: string
-      resumeTitle: string
     }
     include: { title: string; body: string }
     form: {
@@ -113,9 +114,9 @@ export interface Translation {
       more: string
       company: string
       companyPlaceholder: string
-      projectType: string
-      projectTypeNone: string
-      projectTypes: readonly string[]
+      fields: Record<BriefFieldId, BriefFieldCopy>
+      /** Shown after a count when several options are picked: "3 selected". */
+      selected: string
       deadline: string
       send: string
       sending: string
@@ -150,4 +151,60 @@ export interface Translation {
     themeToLight: string
     themeToDark: string
   }
+}
+
+/* ---------- Resume page copy (see data/resumeCopy.ts) ---------- */
+
+export interface ResumeSectionCopy {
+  eyebrow: string
+  title: string
+  sub?: string
+}
+
+export interface ResumeStat {
+  label: string
+  value: string
+  hint: string
+}
+
+export interface ResumeCopy {
+  photoAlt: string
+  eyebrow: string
+  location: string
+  summary: string
+  download: string
+  hire: string
+  stats: {
+    since: ResumeStat
+    tests: ResumeStat
+    lighthouse: ResumeStat
+    status: { label: string; open: Omit<ResumeStat, "label">; closed: Omit<ResumeStat, "label"> }
+  }
+  experience: ResumeSectionCopy & {
+    /** Replaces the end date of a job that is still going. */
+    present: string
+    /** Singular and plural word for "year" and "month", used for the length of the current job. */
+    years: readonly [string, string]
+    months: readonly [string, string]
+    items: Record<ExperienceId, { role: string; company: string; place: string; summary: string; bullets: readonly string[] }>
+  }
+  projects: ResumeSectionCopy & {
+    caseStudy: string
+    live: string
+    code: string
+    items: Record<ResumeProjectId, { title: string; kind: string; bullets: readonly string[] }>
+  }
+  education: ResumeSectionCopy & {
+    items: Record<EducationId, { title: string; school: string; desc: string }>
+  }
+  tools: ResumeSectionCopy & {
+    groups: Record<SkillGroupId, string>
+    methods: string
+    methodItems: readonly string[]
+  }
+  languages: ResumeSectionCopy & {
+    items: readonly { name: string; level: string }[]
+    availability: string
+  }
+  cta: { eyebrow: string; title: string; talk: string; email: string }
 }

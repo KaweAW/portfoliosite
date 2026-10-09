@@ -3,7 +3,7 @@ export const SITE_NAME = "KwLngn"
 export const SITE_TITLE = "KwLngn | Kawe Longon, Frontend Developer"
 
 export const SITE_DESCRIPTION =
-  "Portfolio of Kawe Longon, frontend developer. Selected websites, web apps and a timeline of studies and work."
+  "Portfolio of Kawe Longon, frontend developer. Selected websites, web apps and a resume with experience, projects and skills."
 
 /** Public address of the site, without a trailing slash. Used for canonical links, the sitemap and social previews. */
 export const SITE_URL = "https://kawelongon.netlify.app"

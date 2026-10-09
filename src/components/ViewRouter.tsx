@@ -6,12 +6,12 @@ import { ContactView } from "./views/ContactView"
 import { HomeView } from "./views/HomeView"
 import { ProjectDetailView } from "./views/ProjectDetailView"
 import { ProjectsView } from "./views/ProjectsView"
-import { TimelineView } from "./views/TimelineView"
+import { ResumeView } from "./views/ResumeView"
 
 const VIEWS: Record<ViewId, ComponentType> = {
   home: HomeView,
+  resume: ResumeView,
   projects: ProjectsView,
-  timeline: TimelineView,
   contact: ContactView,
 }
 
