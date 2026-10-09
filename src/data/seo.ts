@@ -14,7 +14,7 @@ const VIEW_DESCRIPTIONS = {
   projects:
     "Selected websites and web apps by Kawe Longon, frontend developer: a setlist app for bands, a restaurant website template, a medical practice website and more.",
   timeline: "Studies and work experience of Kawe Longon, frontend developer, from school to today.",
-  contact: "Contact Kawe Longon, frontend developer: email, GitHub, LinkedIn and resume download.",
+  contact: "Contact Kawe Longon, frontend developer: a project brief form, email, GitHub, LinkedIn and resume download.",
 } as const
 
 /** Search and social metadata of every page of the site, in English. Used at build time. */

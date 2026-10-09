@@ -6,7 +6,12 @@ A minimalist, brutalist-inspired interactive portfolio built with **React 19**, 
 
 ## Features
 
-- **Brutalist & minimalist UI:** dark by default, monospace typography, grid-based layout.
+- **Brutalist & minimalist UI:** monospace typography, grid-based layout.
+- **Dark and light theme:** follows the system setting (`prefers-color-scheme`) until the visitor picks one with the `[◐]` button or the terminal command `theme light`. The choice is saved, and the theme is set before the first paint so there is no flash. Colours are swapped in `src/index.css` (the site uses black/white/neutral utilities, the light theme redefines them).
+- **Contact page:** availability badge (`AVAILABLE_FOR_WORK` in `src/data/contact.ts`), copy-email button that answers on the cursor, links, and a project brief form. The form posts to a Netlify form declared in `index.html`: in the Netlify dashboard open Forms > `brief` > Settings & usage > Form notifications to get each message by email.
+- **Cursor as a tool:** over links and buttons the dot grows into a label (`OPEN ↗`, `COPY`, `SAVE ↓`...). Any element can set its own with `data-cursor="LABEL"`. Desktop only.
+- **Timeline overview:** a line above the list places every entry at its real date; it follows the list while scrolling or hovering, and each dot jumps to its entry.
+- **Shared title transition:** the project title moves from its row into the case study page (and back) with Framer Motion `layoutId`.
 - **Mobile screenshots:** each project shows a phone-sized screenshot on mobile (tall ones scroll through as you scroll). Rendered only on mobile, so desktop never pays for it.
 - **Desktop floating previews:** the desktop screenshot follows the cursor on hover (and keyboard focus) with a spring.
 - **Real URLs:** `/`, `/projects`, `/projects/<project>`, `/timeline` and `/contact`. Old `/#/projects` links are redirected. The build writes one HTML file per page with its own title, description, canonical link and social preview, plus `sitemap.xml` and `robots.txt` (`vite-plugins/seo.ts`).
@@ -43,7 +48,9 @@ npm run preview    # serve the production build locally
 └── src/
     ├── animations/            # Framer Motion variants
     ├── components/
-    │   ├── layout/            # Cursor, language switcher, navigation, hover preview, terminal, skip link
+    │   ├── contact/           # Availability badge, copy email, project brief form
+    │   ├── timeline/          # Timeline overview axis
+    │   ├── layout/            # Cursor, language switcher, theme toggle, navigation, hover preview, terminal, skip link
     │   ├── ui/                # Link, PageShell, ParallaxImage, ScreenshotImage, ScrambleText
     │   ├── views/             # HomeView, ProjectsView, ProjectDetailView, TimelineView, ContactView
     │   └── ViewRouter.tsx     # Picks the view for the current URL
