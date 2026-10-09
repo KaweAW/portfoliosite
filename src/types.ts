@@ -94,8 +94,6 @@ export interface Translation {
       emailTitle: string
       copy: string
       copied: string
-      /** Short jokes shown on the cursor after copying the email. */
-      copyJokes: readonly string[]
       linkedinHint: string
       githubHint: string
     }
@@ -142,13 +140,6 @@ export interface Translation {
     close: string
     label: string
     hint: string
-  }
-  /** Words shown on the cursor over links and buttons. */
-  cursor: {
-    open: string
-    save: string
-    light: string
-    dark: string
   }
   a11y: {
     skipToContent: string

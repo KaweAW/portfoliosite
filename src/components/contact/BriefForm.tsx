@@ -218,7 +218,6 @@ export const BriefForm = () => {
       <button
         type="submit"
         disabled={status === "sending"}
-        data-cursor={copy.send}
         className="group flex cursor-pointer items-stretch self-end text-sm font-bold tracking-widest disabled:opacity-50"
       >
         <span className="flex items-center border border-white px-6 py-3 transition-colors group-hover:bg-white group-hover:text-black group-focus-visible:bg-white group-focus-visible:text-black">
