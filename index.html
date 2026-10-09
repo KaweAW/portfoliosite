@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -7,16 +7,33 @@
     <meta name="color-scheme" content="dark" />
     <meta name="theme-color" content="#000000" />
 
+    <!-- Picks the theme before the first paint: the saved choice, otherwise the system setting. -->
+    <script>
+      try {
+        var saved = localStorage.getItem("kl-theme");
+        var light = saved ? saved === "light" : matchMedia("(prefers-color-scheme: light)").matches;
+        if (light) {
+          document.documentElement.dataset.theme = "light";
+          document.querySelector('meta[name="theme-color"]').setAttribute("content", "#f3f0e8");
+        }
+      } catch (e) {}
+    </script>
+
     <!-- Title, description, canonical, Open Graph and structured data are generated per page by vite-plugins/seo.ts -->
     <!--seo-->
 
     <style>
-      /* Black background while the app loads (no white flash). */
+      /* Page colours while the app loads (no white flash). The app takes over once it starts. */
       html,
       body {
         margin: 0;
         background: #000;
         color: #e0e0e0;
+      }
+      html[data-theme="light"],
+      html[data-theme="light"] body {
+        background: #f3f0e8;
+        color: #1c1c1c;
       }
       body {
         font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
@@ -48,13 +65,24 @@
           white-space: normal;
         }
         main.prerender a {
-          color: #fff;
+          color: inherit;
         }
       </style>
     </noscript>
   </head>
   <body>
     <div id="root"></div>
+    <!-- Netlify reads this form when the site is built; the contact page posts to it (see ContactView). -->
+    <form name="brief" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input name="bot-field" />
+      <input name="name" />
+      <input name="email" />
+      <input name="message" />
+      <input name="budget" />
+      <input name="company" />
+      <input name="projectType" />
+      <input name="deadline" />
+    </form>
     <noscript>This portfolio needs JavaScript. Contact: kawe.longon@gmail.com</noscript>
     <script type="module" src="/src/main.tsx"></script>
   </body>
