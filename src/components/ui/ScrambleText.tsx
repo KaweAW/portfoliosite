@@ -2,14 +2,18 @@ import { useEffect, useRef, useState } from "react"
 import { useInView, useReducedMotion } from "framer-motion"
 import { useIsMobile } from "../../hooks/useMediaQuery"
 
-const CHARS = "!<>-_\\/[]{}—=+*^?#________"
+const SYMBOLS = "!<>-_\\/[]{}—=+*^?#________"
+/** Noise for Russian text, and for the moment a text changes between Latin and Cyrillic: both alphabets mix on screen. */
+const CYRILLIC = "ЖЗИЛФЦШЩЭЮЯжзилфцшщэюя"
 const FRAME_MS = 30
 const REVEAL_PER_FRAME = 1 / 3
 
-const scrambleFrame = (text: string, revealed: number): string =>
+const hasCyrillic = (text: string) => /[\u0400-\u04FF]/.test(text)
+
+const scrambleFrame = (text: string, revealed: number, noise: string): string =>
   Array.from(text, (char, index) => {
     if (index < revealed || char === " ") return char
-    return CHARS[Math.floor(Math.random() * CHARS.length)]
+    return noise[Math.floor(Math.random() * noise.length)]
   }).join("")
 
 interface Frame {
@@ -23,7 +27,8 @@ interface ScrambleTextProps {
 }
 
 /**
- * Decodes `text` letter by letter. On desktop it runs on mount and on hover;
+ * Decodes `text` letter by letter. When the text changes (the visitor switches
+ * language) it decodes again into the new text, without remounting. On desktop it runs on mount and on hover;
  * on mobile it waits until the text scrolls into view. Skipped entirely when
  * the visitor prefers reduced motion.
  */
@@ -38,8 +43,16 @@ export const ScrambleText = ({ text }: ScrambleTextProps) => {
   const reduceMotion = useReducedMotion()
   const enabled = !reduceMotion && (!isMobile || isInView)
 
+  // The previous text tells whether the alphabet changes (Latin to Cyrillic or back), so the noise can mix both.
+  const previousText = useRef(text)
+
   useEffect(() => {
+    const before = previousText.current
+    previousText.current = text
     if (!enabled) return
+
+    const cyrillic = hasCyrillic(text) || hasCyrillic(before)
+    const noise = cyrillic ? `${CYRILLIC}${SYMBOLS}` : SYMBOLS
 
     let revealed = 0
     isScrambling.current = true
@@ -51,7 +64,7 @@ export const ScrambleText = ({ text }: ScrambleTextProps) => {
         setFrame(null)
         return
       }
-      setFrame({ source: text, value: scrambleFrame(text, revealed) })
+      setFrame({ source: text, value: scrambleFrame(text, revealed, noise) })
       revealed += REVEAL_PER_FRAME
     }, FRAME_MS)
 

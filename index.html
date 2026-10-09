@@ -22,6 +22,7 @@
     <!-- Title, description, canonical, Open Graph and structured data are generated per page by vite-plugins/seo.ts -->
     <!--seo-->
 
+    <link rel="preload" href="/fonts/jetbrains-mono-latin.woff2" as="font" type="font/woff2" crossorigin />
     <style>
       /* Page colours while the app loads (no white flash). The app takes over once it starts. */
       html,
@@ -36,7 +37,7 @@
         color: #1c1c1c;
       }
       body {
-        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+        font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
       }
       /* Text for crawlers and screen readers only: hidden visually so it never flashes before the app starts. */
       main.prerender {

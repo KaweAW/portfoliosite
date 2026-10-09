@@ -143,6 +143,13 @@ export interface Translation {
     label: string
     hint: string
   }
+  /** Words shown on the cursor over links and buttons. */
+  cursor: {
+    open: string
+    save: string
+    light: string
+    dark: string
+  }
   a11y: {
     skipToContent: string
     languageSwitcher: string
@@ -207,4 +214,34 @@ export interface ResumeCopy {
     availability: string
   }
   cta: { eyebrow: string; title: string; talk: string; email: string }
+}
+
+/** Text of the terminal (everything except the command names, which are typed and stay in English). */
+export interface TerminalCopy {
+  welcome: readonly [string, string]
+  /** What each command does, shown by `help`. */
+  help: Record<
+    "help" | "ls" | "projects" | "open" | "whoami" | "contact" | "email" | "github" | "linkedin" | "resume" | "lang" | "theme" | "history" | "clear" | "exit",
+    string
+  >
+  helpFooter: string
+  commandNotFound: string
+  openUsage: string
+  noSuchPage: string
+  whoami: readonly [string, string, string, string]
+  openingMail: string
+  openingGithub: string
+  openingLinkedin: string
+  downloading: string
+  langCurrent: string
+  langAvailable: string
+  langUnknown: string
+  langSet: string
+  themeCurrent: string
+  themeAvailable: string
+  themeUnknown: string
+  themeSet: string
+  sudoGranted: string
+  sudoJoke: string
+  sudoDenied: string
 }

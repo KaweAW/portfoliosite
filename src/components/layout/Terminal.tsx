@@ -6,7 +6,8 @@ import { useLayout } from "../../hooks/useLayout"
 import { navigate } from "../../lib/navigation"
 import { getTheme, setTheme } from "../../lib/theme"
 import { hrefFor, projectHref, VIEW_IDS } from "../../routes"
-import type { Language, Translation } from "../../types"
+import { fillTemplate, TERMINAL_COPY } from "../../data/terminalCopy"
+import type { Language, TerminalCopy, Translation } from "../../types"
 
 interface Line {
   id: number
@@ -18,6 +19,7 @@ interface CommandContext {
   args: string[]
   language: Language
   t: Translation
+  copy: TerminalCopy
   setLanguage: (language: Language) => void
   close: () => void
   clear: () => void
@@ -27,7 +29,6 @@ interface CommandContext {
 type Output = string[] | { error: string }
 
 interface Command {
-  help: string
   run: (context: CommandContext) => Output | void
 }
 
@@ -56,11 +57,11 @@ const projectList = ({ t }: CommandContext): string[] =>
       `${String(index + 1).padStart(2, "0")}  ${pad(project.slug, 18)}${t.projects.items[project.id].desc}`,
   )
 
-const open = ({ args, close }: CommandContext): Output => {
+const open = ({ args, close, copy }: CommandContext): Output => {
   const target = args[0]
-  if (!target) return { error: "usage: open <number | project | page>   (try: ls projects)" }
+  if (!target) return { error: copy.openUsage }
   const path = resolveTarget(target)
-  if (!path) return { error: `no such page: ${target}` }
+  if (!path) return { error: fillTemplate(copy.noSuchPage, { target }) }
   close()
   navigate(path)
   return []
@@ -68,34 +69,21 @@ const open = ({ args, close }: CommandContext): Output => {
 
 const COMMANDS: Record<string, Command> = {
   help: {
-    help: "show this list",
-    run: () => [
-      ...Object.entries(COMMANDS)
-        .filter(([name]) => !HIDDEN.has(name))
-        .map(([name, command]) => `${pad(name, 12)}${command.help}`),
+    run: ({ copy }) => [
+      ...Object.entries(copy.help).map(([name, text]) => `${pad(name, 12)}${text}`),
       "",
-      "tab completes, arrow up/down browse history, esc closes",
+      copy.helpFooter,
     ],
   },
   ls: {
-    help: "list pages, or `ls projects`",
     run: (context) =>
       context.args[0] === "projects" ? projectList(context) : [VIEW_IDS.join("   ")],
   },
-  projects: { help: "list projects", run: projectList },
-  open: { help: "open a project or page: open 1, open scaletta, open contact", run: open },
-  cd: { help: "same as open", run: open },
-  whoami: {
-    help: "who is this",
-    run: () => [
-      "kawe longon",
-      "frontend developer",
-      "react, typescript, next.js, tailwind css",
-      "type `projects` to see what i built",
-    ],
-  },
+  projects: { run: projectList },
+  open: { run: open },
+  cd: { run: open },
+  whoami: { run: ({ copy }) => [...copy.whoami] },
   contact: {
-    help: "how to reach me",
     run: () => [
       `${pad("email", 10)}${CONTACT.email}`,
       `${pad("github", 10)}${CONTACT.githubDisplay}`,
@@ -103,91 +91,79 @@ const COMMANDS: Record<string, Command> = {
     ],
   },
   email: {
-    help: "write me an email",
-    run: () => {
+    run: ({ copy }) => {
       window.location.href = `mailto:${CONTACT.email}`
-      return ["opening your mail app..."]
+      return [copy.openingMail]
     },
   },
   github: {
-    help: "open my GitHub",
-    run: () => {
+    run: ({ copy }) => {
       window.open(CONTACT.github, "_blank", "noopener,noreferrer")
-      return ["opening github..."]
+      return [copy.openingGithub]
     },
   },
   linkedin: {
-    help: "open my LinkedIn",
-    run: () => {
+    run: ({ copy }) => {
       window.open(CONTACT.linkedin, "_blank", "noopener,noreferrer")
-      return ["opening linkedin..."]
+      return [copy.openingLinkedin]
     },
   },
   resume: {
-    help: "download my resume (in the current language)",
-    run: ({ language }) => {
+    run: ({ language, copy }) => {
       const file = RESUME_FILES[language]
       const link = document.createElement("a")
       link.href = `/${file}`
       link.download = file
       link.click()
-      return [`downloading ${file}...`]
+      return [fillTemplate(copy.downloading, { file })]
     },
   },
   lang: {
-    help: "show or change the language: lang it",
-    run: ({ args, language, setLanguage }) => {
+    run: ({ args, language, setLanguage, copy }) => {
       const codes = LANGUAGES.map((item) => item.code)
+      const list = codes.join(" ")
       const wanted = args[0]?.toUpperCase()
-      if (!wanted) return [`current: ${language}`, `available: ${codes.join(" ")}`]
+      if (!wanted) return [fillTemplate(copy.langCurrent, { language }), fillTemplate(copy.langAvailable, { codes: list })]
       const match = codes.find((code) => code === wanted)
-      if (!match) return { error: `unknown language: ${args[0]} (available: ${codes.join(" ")})` }
+      if (!match) return { error: fillTemplate(copy.langUnknown, { value: args[0] ?? "", codes: list }) }
       setLanguage(match)
-      return [`language set to ${match}`]
+      return [fillTemplate(copy.langSet, { language: match })]
     },
   },
   theme: {
-    help: "show or change the theme: theme light | dark",
-    run: ({ args }) => {
+    run: ({ args, copy }) => {
       const wanted = args[0]?.toLowerCase()
-      if (!wanted) return [`current: ${getTheme()}`, "available: dark light"]
-      if (wanted !== "dark" && wanted !== "light") return { error: `unknown theme: ${args[0]} (available: dark light)` }
+      if (!wanted) return [fillTemplate(copy.themeCurrent, { theme: getTheme() }), copy.themeAvailable]
+      if (wanted !== "dark" && wanted !== "light") {
+        return { error: fillTemplate(copy.themeUnknown, { value: args[0] ?? "" }) }
+      }
       setTheme(wanted)
-      return [`theme set to ${wanted}`]
+      return [fillTemplate(copy.themeSet, { theme: wanted })]
     },
   },
   history: {
-    help: "commands typed so far",
     run: ({ history }) => history.map((entry, index) => `${String(index + 1).padStart(2, " ")}  ${entry}`),
   },
   clear: {
-    help: "clear the screen",
     run: ({ clear }) => {
       clear()
     },
   },
   exit: {
-    help: "close the terminal",
     run: ({ close }) => {
       close()
     },
   },
   sudo: {
-    help: "",
-    run: ({ args }) =>
+    run: ({ args, copy }) =>
       args.join(" ").toLowerCase() === "hire me"
-        ? [
-            "[sudo] permission granted.",
-            `sending your offer to ${CONTACT.email} ... just kidding, write me an email: type \`email\``,
-          ]
-        : { error: "kawe is not in the sudoers file. This incident will be reported." },
+        ? [copy.sudoGranted, fillTemplate(copy.sudoJoke, { email: CONTACT.email })]
+        : { error: copy.sudoDenied },
   },
 }
 
 /** Commands that exist but are not worth listing in `help`. */
 const HIDDEN = new Set(["cd", "sudo"])
-
-const WELCOME = ["KwLngn terminal", "type `help` to see the commands"]
 
 const complete = (input: string): string => {
   const [first = "", ...rest] = input.split(/\s+/)
@@ -205,15 +181,16 @@ const complete = (input: string): string => {
 
 export const Terminal = ({ onClose }: { onClose: () => void }) => {
   const { language, setLanguage, t } = useLayout()
+  const copy = TERMINAL_COPY[language]
   const [lines, setLines] = useState<Line[]>(() =>
-    WELCOME.map((text, index) => ({ id: index, kind: "out", text })),
+    copy.welcome.map((text, index) => ({ id: index, kind: "out", text })),
   )
   const [value, setValue] = useState("")
   const [history, setHistory] = useState<string[]>([])
   const [cursor, setCursor] = useState<number | null>(null)
   const inputRef = useRef<HTMLInputElement>(null)
   const logRef = useRef<HTMLDivElement>(null)
-  const nextId = useRef(WELCOME.length)
+  const nextId = useRef(copy.welcome.length)
 
   // Take focus on open and give it back on close.
   useEffect(() => {
@@ -244,13 +221,14 @@ export const Terminal = ({ onClose }: { onClose: () => void }) => {
 
     const command = COMMANDS[name.toLowerCase()]
     if (!command) {
-      append("err", [`command not found: ${name}. Type \`help\`.`])
+      append("err", [fillTemplate(copy.commandNotFound, { name })])
       return
     }
     const output = command.run({
       args,
       language,
       t,
+      copy,
       setLanguage,
       close: onClose,
       clear: () => setLines([]),

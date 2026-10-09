@@ -85,6 +85,7 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       label: "Terminale",
       hint: "Scrivi help per i comandi. Esc per chiudere.",
     },
+    cursor: { open: "APRI ↗", save: "SALVA ↓", light: "CHIARO", dark: "SCURO" },
     a11y: {
       skipToContent: "Vai al contenuto",
       languageSwitcher: "Selettore lingua",
@@ -175,6 +176,7 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       label: "Terminal",
       hint: "Type help for commands. Esc to close.",
     },
+    cursor: { open: "OPEN ↗", save: "SAVE ↓", light: "LIGHT", dark: "DARK" },
     a11y: {
       skipToContent: "Skip to content",
       languageSwitcher: "Language switcher",
@@ -265,6 +267,7 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       label: "Terminal",
       hint: "Tapez help pour les commandes. Échap pour fermer.",
     },
+    cursor: { open: "OUVRIR ↗", save: "TÉLÉCH. ↓", light: "CLAIR", dark: "SOMBRE" },
     a11y: {
       skipToContent: "Aller au contenu",
       languageSwitcher: "Sélecteur de langue",
@@ -355,6 +358,7 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       label: "Terminal",
       hint: "Mit help siehst du die Befehle. Esc zum Schließen.",
     },
+    cursor: { open: "ÖFFNEN ↗", save: "SPEICHERN ↓", light: "HELL", dark: "DUNKEL" },
     a11y: {
       skipToContent: "Zum Inhalt springen",
       languageSwitcher: "Sprachauswahl",
@@ -445,6 +449,7 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       label: "Терминал",
       hint: "Введите help, чтобы увидеть команды. Esc — закрыть.",
     },
+    cursor: { open: "ОТКРЫТЬ ↗", save: "СКАЧАТЬ ↓", light: "СВЕТЛАЯ", dark: "ТЁМНАЯ" },
     a11y: {
       skipToContent: "Перейти к содержимому",
       languageSwitcher: "Выбор языка",

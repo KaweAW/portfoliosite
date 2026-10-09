@@ -19,10 +19,10 @@ export const ThemeToggle = () => {
       onClick={() => {
         toggle()
         // The label describes what the next click does, so it changes with the theme.
-        setHoverLabel(moon ? "DARK" : "LIGHT")
+        setHoverLabel(moon ? t.cursor.dark : t.cursor.light)
       }}
       aria-label={moon ? t.a11y.themeToLight : t.a11y.themeToDark}
-      data-cursor={moon ? "LIGHT" : "DARK"}
+      data-cursor={moon ? t.cursor.light : t.cursor.dark}
       className="flex h-6 w-6 cursor-pointer items-center justify-center text-white transition-colors md:text-invert"
     >
       <motion.svg
