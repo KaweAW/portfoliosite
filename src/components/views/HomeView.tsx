@@ -2,6 +2,7 @@ import { motion } from "framer-motion"
 import { itemVariants } from "../../animations"
 import { useLayout } from "../../hooks/useLayout"
 import { hrefFor } from "../../routes"
+import { Link } from "../ui/Link"
 import { PageShell } from "../ui/PageShell"
 import { ScrambleText } from "../ui/ScrambleText"
 
@@ -26,9 +27,9 @@ export const HomeView = () => {
         variants={itemVariants}
         className="relative z-10 text-center text-[14vw] leading-none font-bold tracking-tighter whitespace-nowrap text-fg drop-shadow-2xl md:text-[10vw]"
       >
-        <a href={hrefFor("projects")} className="transition-colors hover:text-white">
+        <Link href={hrefFor("resume")} className="transition-colors hover:text-white">
           <ScrambleText text="KAWE LONGON" />
-        </a>
+        </Link>
       </motion.h1>
 
       <motion.p
