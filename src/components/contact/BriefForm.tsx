@@ -3,10 +3,24 @@ import { AnimatePresence, motion } from "framer-motion"
 import { CONTACT } from "../../data/contact"
 import { useLayout } from "../../hooks/useLayout"
 import { cn } from "../../lib/cn"
+import type { BriefFieldId } from "../../types"
+import { Select } from "../ui/Select"
 
 const BUDGET_MIN = 500
 const BUDGET_MAX = 10000
 const BUDGET_STEP = 500
+
+/** Dropdowns of the "More information" part, in the order they are shown. `multiple` ones take several options. */
+const DROPDOWNS: readonly { id: BriefFieldId; multiple?: boolean }[] = [
+  { id: "projectType" },
+  { id: "features", multiple: true },
+  { id: "technologies", multiple: true },
+  { id: "assets", multiple: true },
+  { id: "audience", multiple: true },
+  { id: "hosting" },
+  { id: "support" },
+  { id: "legal", multiple: true },
+]
 
 const euro = (value: number) => `€ ${value.toLocaleString("en-US")}`
 
@@ -36,6 +50,8 @@ export const BriefForm = () => {
   const [status, setStatus] = useState<Status>("idle")
   const [budget, setBudget] = useState<number | null>(null)
   const [showMore, setShowMore] = useState(false)
+  // The dropdown lists must be able to leave the box, so clipping only lasts while it opens or closes.
+  const [settled, setSettled] = useState(false)
 
   const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -125,7 +141,10 @@ export const BriefForm = () => {
           type="button"
           aria-expanded={showMore}
           aria-controls={`${id}-more`}
-          onClick={() => setShowMore((open) => !open)}
+          onClick={() => {
+            setSettled(false)
+            setShowMore((open) => !open)
+          }}
           className="flex w-full cursor-pointer items-center gap-3 text-xs tracking-widest text-neutral-400 hover:text-white"
         >
           <span aria-hidden="true" className={cn("inline-block transition-transform", showMore && "rotate-90")}>
@@ -143,25 +162,40 @@ export const BriefForm = () => {
               animate={{ height: "auto", opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
               transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              className="overflow-hidden"
+              onAnimationComplete={(definition) => {
+                if (typeof definition === "object" && "opacity" in definition && definition.opacity === 1) setSettled(true)
+              }}
+              className={settled ? "overflow-visible" : "overflow-hidden"}
             >
               <div className="grid gap-5 pt-5 md:grid-cols-2">
-                <Field label={copy.company} htmlFor={`${id}-company`}>
-                  <input id={`${id}-company`} name="company" autoComplete="organization" placeholder={copy.companyPlaceholder} className={fieldClass} />
-                </Field>
-                <Field label={copy.projectType} htmlFor={`${id}-type`}>
-                  <select id={`${id}-type`} name="projectType" defaultValue="" className={fieldClass}>
-                    <option value="">{copy.projectTypeNone}</option>
-                    {copy.projectTypes.map((type) => (
-                      <option key={type} value={type}>
-                        {type}
-                      </option>
-                    ))}
-                  </select>
-                </Field>
+                <div className="md:col-span-2">
+                  <Field label={copy.company} htmlFor={`${id}-company`}>
+                    <input id={`${id}-company`} name="company" autoComplete="organization" placeholder={copy.companyPlaceholder} className={fieldClass} />
+                  </Field>
+                </div>
+
+                {DROPDOWNS.map(({ id: fieldId, multiple }) => (
+                  <Select
+                    key={fieldId}
+                    name={fieldId}
+                    multiple={multiple}
+                    label={copy.fields[fieldId].label}
+                    placeholder={copy.fields[fieldId].placeholder}
+                    options={copy.fields[fieldId].options}
+                    selectedWord={copy.selected}
+                  />
+                ))}
+
                 <Field label={copy.deadline} htmlFor={`${id}-deadline`}>
                   <input id={`${id}-deadline`} name="deadline" type="date" className={cn(fieldClass, "in-data-[theme=light]:scheme-light scheme-dark")} />
                 </Field>
+                <Select
+                  name="priority"
+                  label={copy.fields.priority.label}
+                  placeholder={copy.fields.priority.placeholder}
+                  options={copy.fields.priority.options}
+                  selectedWord={copy.selected}
+                />
               </div>
             </motion.div>
           )}
@@ -181,11 +215,24 @@ export const BriefForm = () => {
         type="submit"
         disabled={status === "sending"}
         data-cursor={copy.send}
-        className="flex cursor-pointer items-center justify-between self-end border border-white px-6 py-3 text-sm font-bold tracking-widest transition-colors hover:bg-white hover:text-black focus-visible:bg-white focus-visible:text-black disabled:opacity-50 md:min-w-48"
+        className="group flex cursor-pointer items-stretch self-end text-sm font-bold tracking-widest disabled:opacity-50"
       >
-        <span>{status === "sending" ? copy.sending : copy.send}</span>
-        <span aria-hidden="true" className="ml-6">
-          →
+        <span className="flex items-center border border-white px-6 py-3 transition-colors group-hover:bg-white group-hover:text-black group-focus-visible:bg-white group-focus-visible:text-black">
+          {status === "sending" ? copy.sending : copy.send}
+        </span>
+        <span className="flex w-12 items-center justify-center border border-white bg-white text-black">
+          <svg
+            aria-hidden="true"
+            viewBox="0 0 24 24"
+            className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.6"
+            strokeLinejoin="round"
+          >
+            <path d="M21 3 3 10.5l7 3 3 7L21 3Z" />
+            <path d="m10 13.5 4-4" />
+          </svg>
         </span>
       </button>
     </form>
