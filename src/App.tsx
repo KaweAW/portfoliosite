@@ -30,7 +30,7 @@ export default function App() {
             <main
               id={MAIN_ID}
               tabIndex={-1}
-              className="relative h-full w-full overflow-hidden p-4 pb-24 text-[#e0e0e0] outline-none md:p-8 md:pb-8"
+              className="relative h-full w-full overflow-hidden p-4 pb-24 text-fg outline-none md:p-8 md:pb-8"
             >
               <StatusBadge />
               <div className="relative z-10 flex h-full w-full flex-col">

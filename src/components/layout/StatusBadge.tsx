@@ -2,7 +2,7 @@
 export const StatusBadge = () => (
   <div
     aria-hidden="true"
-    className="absolute right-8 bottom-24 z-20 hidden text-right text-xs tracking-widest opacity-50 mix-blend-difference md:bottom-8 md:block"
+    className="pointer-events-none absolute right-8 bottom-24 z-20 hidden text-right text-xs tracking-widest text-invert opacity-50 mix-blend-difference md:bottom-8 md:block"
   >
     [ SYSTEM ONLINE ]
     <br />

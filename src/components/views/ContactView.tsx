@@ -1,79 +1,119 @@
+import type { ReactNode } from "react"
 import { motion } from "framer-motion"
 import { itemVariants } from "../../animations"
+import { AvailabilityBadge } from "../contact/AvailabilityBadge"
+import { BriefForm } from "../contact/BriefForm"
+import { CopyEmail } from "../contact/CopyEmail"
 import { CONTACT, RESUME_FILES } from "../../data/contact"
 import { useLayout } from "../../hooks/useLayout"
-import { PageHeader, PageShell } from "../ui/PageShell"
+import { PageShell } from "../ui/PageShell"
+
+interface CardProps {
+  icon: string
+  title: string
+  hint: string
+  href: string
+  external?: boolean
+  download?: string
+  cursor?: string
+  action?: ReactNode
+}
+
+/** One row of the contact list: an icon, a title, a short hint and an arrow. */
+const ContactCard = ({ icon, title, hint, href, external, download, cursor, action }: CardProps) => {
+  const { t } = useLayout()
+  return (
+    <motion.li variants={itemVariants} className="flex items-stretch border border-white/20 transition-colors hover:border-white/50">
+      <a
+        href={href}
+        download={download}
+        data-cursor={cursor}
+        {...(external && { target: "_blank", rel: "noreferrer" })}
+        className="group flex min-w-0 flex-1 items-center gap-4 p-4 transition-colors md:hover:bg-white/5"
+      >
+        <span
+          aria-hidden="true"
+          className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/20 text-xs text-neutral-400"
+        >
+          {icon}
+        </span>
+        <span className="flex min-w-0 flex-1 flex-col gap-1">
+          <span className="text-sm font-bold tracking-tight md:text-base">{title}</span>
+          <span className="truncate text-[10px] text-neutral-400 normal-case md:text-xs">{hint}</span>
+        </span>
+        <span aria-hidden="true" className="text-neutral-400 transition-transform md:group-hover:translate-x-1">
+          {download ? "↓" : "→"}
+        </span>
+        {external && <span className="sr-only">{t.a11y.opensInNewTab}</span>}
+      </a>
+      {action}
+    </motion.li>
+  )
+}
 
 export const ContactView = () => {
   const { t, language } = useLayout()
+  const copy = t.contact
   const resumeFile = RESUME_FILES[language]
-
-  const contacts = [
-    { id: "email", label: t.info.contacts.email, value: CONTACT.email, href: `mailto:${CONTACT.email}` },
-    { id: "github", label: "GitHub", value: CONTACT.githubDisplay, href: CONTACT.github },
-    { id: "linkedin", label: "LinkedIn", value: CONTACT.linkedinDisplay, href: CONTACT.linkedin },
-  ]
 
   return (
     <PageShell className="pt-16 md:pt-24">
-      <PageHeader title={t.info.title} />
+      <div className="scrollbar-none grid flex-1 grid-cols-1 gap-8 overflow-y-auto px-1 pb-4 md:grid-cols-2 md:gap-12 md:px-0">
+        <div className="flex flex-col gap-6 md:gap-8">
+          <div>
+            <motion.p variants={itemVariants} className="mb-3 text-[10px] tracking-widest text-neutral-500 md:text-xs">
+              ◆ {copy.eyebrow}
+            </motion.p>
+            <motion.h1 variants={itemVariants} className="text-4xl leading-none font-bold tracking-tighter md:text-7xl">
+              {copy.headline}
+            </motion.h1>
+            <motion.p
+              variants={itemVariants}
+              className="mt-4 max-w-xl text-sm leading-relaxed tracking-normal text-neutral-400 normal-case md:mt-6 md:text-base"
+            >
+              {copy.intro}
+            </motion.p>
+            <motion.div variants={itemVariants} className="mt-5">
+              <AvailabilityBadge />
+            </motion.div>
+          </div>
 
-      <div className="scrollbar-none mt-4 flex flex-col gap-8 overflow-y-auto pb-4 md:mt-6 md:flex-row md:gap-12">
-        <div className="flex-1 px-2 md:px-0">
-          <motion.h2
-            variants={itemVariants}
-            className="mb-4 text-[10px] tracking-widest opacity-50 md:mb-6 md:text-xs"
-          >
-            {t.info.contactProtocols}
-          </motion.h2>
-
-          <ul className="flex flex-col gap-4">
-            {contacts.map((contact) => {
-              const isExternal = contact.href.startsWith("http")
-              return (
-                <motion.li key={contact.id} variants={itemVariants}>
-                  <a
-                    href={contact.href}
-                    {...(isExternal && { target: "_blank", rel: "noreferrer" })}
-                    className="group flex flex-col items-start border-b border-white/20 pb-3 text-neutral-400 transition-all active:text-white md:flex-row md:items-end md:justify-between md:pb-2 md:hover:text-white"
-                  >
-                    <span className="mb-1 text-[10px] md:mb-0 md:text-xs">[{contact.label}]</span>
-                    <span className="text-sm break-all transition-colors md:px-2 md:text-xl md:group-hover:bg-white md:group-hover:text-black">
-                      {contact.value}
-                    </span>
-                    {isExternal && <span className="sr-only">{t.a11y.opensInNewTab}</span>}
-                  </a>
-                </motion.li>
-              )
-            })}
+          <ul className="flex flex-col gap-3">
+            <ContactCard
+              icon="@"
+              title={copy.cards.emailTitle}
+              hint={CONTACT.email}
+              href={`mailto:${CONTACT.email}`}
+              action={<CopyEmail />}
+            />
+            <ContactCard icon="in" title="LinkedIn" hint={copy.cards.linkedinHint} href={CONTACT.linkedin} external />
+            <ContactCard icon="</>" title="GitHub" hint={copy.cards.githubHint} href={CONTACT.github} external />
+            <ContactCard
+              icon="CV"
+              title={copy.cards.resumeTitle}
+              hint={resumeFile}
+              href={`/${resumeFile}`}
+              download={resumeFile}
+              cursor="SAVE ↓"
+            />
           </ul>
+
+          <motion.div variants={itemVariants} className="border border-dashed border-white/30 p-4 md:p-5">
+            <h2 className="mb-2 text-[10px] tracking-widest text-ok md:text-xs">◆ {copy.include.title}</h2>
+            <p className="text-xs leading-relaxed tracking-normal text-neutral-400 normal-case md:text-sm">{copy.include.body}</p>
+          </motion.div>
         </div>
 
-        <div className="mt-4 flex flex-1 flex-col items-start justify-start px-2 md:mt-0 md:items-end md:px-0">
-          <motion.h2
-            variants={itemVariants}
-            className="mb-4 text-[10px] tracking-widest opacity-50 md:mb-6 md:text-xs"
-          >
-            {t.info.dataExtract}
-          </motion.h2>
-
-          <motion.a
-            variants={itemVariants}
-            href={`/${resumeFile}`}
-            download={resumeFile}
-            className="group relative block w-full border border-white p-4 text-left transition-colors active:bg-white active:text-black md:w-auto md:p-6 md:text-right md:hover:bg-white md:hover:text-black"
-          >
-            <div className="mb-2 text-[10px] uppercase opacity-50 md:mb-4 md:text-xs md:group-hover:text-black">
-              {resumeFile}
-            </div>
-            <div className="flex items-center justify-between gap-4 text-2xl font-bold tracking-tighter md:gap-8 md:text-4xl">
-              <span>{t.info.download}</span>
-              <span aria-hidden="true" className="animate-bounce">
-                ↓
-              </span>
-            </div>
-          </motion.a>
-        </div>
+        <motion.section
+          variants={itemVariants}
+          aria-labelledby="brief-title"
+          className="h-fit border border-white/20 p-4 md:p-6"
+        >
+          <h2 id="brief-title" className="mb-5 border-b border-white/20 pb-4 text-xl font-bold tracking-tighter md:text-2xl">
+            {copy.form.title}
+          </h2>
+          <BriefForm />
+        </motion.section>
       </div>
     </PageShell>
   )

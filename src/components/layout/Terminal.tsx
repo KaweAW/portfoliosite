@@ -4,6 +4,7 @@ import { LANGUAGES } from "../../data/languages"
 import { PROJECTS } from "../../data/projects"
 import { useLayout } from "../../hooks/useLayout"
 import { navigate } from "../../lib/navigation"
+import { getTheme, setTheme } from "../../lib/theme"
 import { hrefFor, projectHref, VIEW_IDS } from "../../routes"
 import type { Language, Translation } from "../../types"
 
@@ -143,6 +144,16 @@ const COMMANDS: Record<string, Command> = {
       if (!match) return { error: `unknown language: ${args[0]} (available: ${codes.join(" ")})` }
       setLanguage(match)
       return [`language set to ${match}`]
+    },
+  },
+  theme: {
+    help: "show or change the theme: theme light | dark",
+    run: ({ args }) => {
+      const wanted = args[0]?.toLowerCase()
+      if (!wanted) return [`current: ${getTheme()}`, "available: dark light"]
+      if (wanted !== "dark" && wanted !== "light") return { error: `unknown theme: ${args[0]} (available: dark light)` }
+      setTheme(wanted)
+      return [`theme set to ${wanted}`]
     },
   },
   history: {

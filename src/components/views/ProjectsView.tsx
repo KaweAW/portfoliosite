@@ -35,9 +35,12 @@ const ProjectRow = ({ project, index, scrollRef }: ProjectRowProps) => {
         className="group relative flex flex-col justify-between border-b border-white/10 px-2 py-6 transition-colors duration-300 focus-visible:bg-white focus-visible:text-black active:bg-white active:text-black md:px-4 md:py-10 md:hover:bg-white md:hover:text-black"
       >
         <div className="relative z-10 flex w-full flex-col items-start justify-between md:flex-row md:items-center">
-          <h2 className="mb-2 w-full text-2xl font-bold tracking-tighter md:mb-0 md:w-1/2 md:text-5xl">
+          <motion.h2
+            layoutId={`project-title-${project.id}`}
+            className="mb-2 w-full text-2xl font-bold tracking-tighter md:mb-0 md:w-1/2 md:text-5xl"
+          >
             {copy.title}
-          </h2>
+          </motion.h2>
           <div className="flex w-full flex-col items-start md:w-1/2 md:items-end">
             <span className="mb-1 text-[10px] opacity-50 md:text-xs">
               ID: {String(index + 1).padStart(2, "0")}
