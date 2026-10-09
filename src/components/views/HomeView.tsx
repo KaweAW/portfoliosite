@@ -19,12 +19,12 @@ export const HomeView = () => {
         initial={{ opacity: 0, scale: 0.95, y: "-50%", x: "-50%" }}
         animate={{ opacity: 0.4, scale: 1, y: "-50%", x: "-50%" }}
         transition={{ duration: 2, ease: "easeOut", delay: 0.3 }}
-        className="pointer-events-none absolute top-1/2 left-1/2 -z-10 w-[80vw] max-w-3xl object-contain select-none md:w-[45vw]"
+        className="pointer-events-none absolute top-1/2 left-1/2 -z-10 w-[80vw] max-w-3xl object-contain select-none md:w-[45vw] in-data-[theme=light]:invert"
       />
 
       <motion.h1
         variants={itemVariants}
-        className="relative z-10 text-center text-[14vw] leading-none font-bold tracking-tighter whitespace-nowrap text-[#e0e0e0] drop-shadow-2xl md:text-[10vw]"
+        className="relative z-10 text-center text-[14vw] leading-none font-bold tracking-tighter whitespace-nowrap text-fg drop-shadow-2xl md:text-[10vw]"
       >
         <a href={hrefFor("projects")} className="transition-colors hover:text-white">
           <ScrambleText text="KAWE LONGON" />

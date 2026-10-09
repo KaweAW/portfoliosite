@@ -35,7 +35,9 @@ export const ProjectDetailView = () => {
       <div className="scrollbar-none flex-1 overflow-y-auto pr-2 pb-4 md:pr-4">
         <motion.header variants={itemVariants} className="mb-6 border-b border-white/20 pb-4 md:mb-8">
           <p className="mb-2 text-[10px] tracking-widest text-neutral-500 md:text-xs">{labels.caseStudy}</p>
-          <h1 className="text-4xl font-bold tracking-tighter md:text-7xl">{copy.title}</h1>
+          <motion.h1 layoutId={`project-title-${project.id}`} className="text-4xl font-bold tracking-tighter md:text-7xl">
+            {copy.title}
+          </motion.h1>
           <p className="mt-3 max-w-2xl text-xs text-neutral-400 normal-case md:text-sm">{copy.desc}</p>
         </motion.header>
 

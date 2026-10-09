@@ -35,7 +35,7 @@ export const TerminalLauncher = () => {
         onClick={() => setOpen(true)}
         onPointerEnter={loadTerminal}
         onFocus={loadTerminal}
-        className="fixed top-4 right-4 z-9999 cursor-pointer border border-white/10 bg-black/50 px-2 py-2 font-mono text-xs tracking-widest text-neutral-300 backdrop-blur-sm transition-colors select-none hover:text-white md:top-auto md:right-auto md:bottom-2 md:left-8 md:border-transparent md:bg-transparent md:p-0 md:text-[10px] md:mix-blend-difference md:backdrop-blur-none"
+        className="fixed top-4 right-4 z-9999 cursor-pointer border border-white/10 bg-black/50 px-2 py-2 font-mono text-xs tracking-widest text-neutral-300 backdrop-blur-sm transition-colors select-none hover:text-white md:top-auto md:right-auto md:bottom-2 md:left-8 md:border-transparent md:bg-transparent md:p-0 md:text-[10px] md:text-invert/60 md:hover:text-invert md:mix-blend-difference md:backdrop-blur-none"
       >
         <span aria-hidden="true" className="md:hidden">
           &gt;_

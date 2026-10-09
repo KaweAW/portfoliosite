@@ -78,15 +78,51 @@ export interface Translation {
   timeline: {
     title: string
     ongoing: string
+    /** Accessible name of the overview axis above the list. */
+    axis: string
     items: Record<TimelineId, ItemCopy>
   }
-  info: {
+  contact: {
     title: string
-    contactProtocols: string
-    dataExtract: string
-    download: string
-    contacts: {
+    eyebrow: string
+    headline: string
+    intro: string
+    availability: { open: string; closed: string }
+    cards: {
+      emailTitle: string
+      copy: string
+      copied: string
+      /** Short jokes shown on the cursor after copying the email. */
+      copyJokes: readonly string[]
+      linkedinHint: string
+      githubHint: string
+      resumeTitle: string
+    }
+    include: { title: string; body: string }
+    form: {
+      title: string
+      name: string
+      namePlaceholder: string
       email: string
+      emailPlaceholder: string
+      message: string
+      messagePlaceholder: string
+      budget: string
+      budgetNone: string
+      budgetClear: string
+      more: string
+      company: string
+      companyPlaceholder: string
+      projectType: string
+      projectTypeNone: string
+      projectTypes: readonly string[]
+      deadline: string
+      send: string
+      sending: string
+      sent: string
+      /** Followed by the email address. */
+      error: string
+      required: string
     }
   }
   projectPage: {
@@ -111,5 +147,7 @@ export interface Translation {
     languageSwitcher: string
     primaryNav: string
     opensInNewTab: string
+    themeToLight: string
+    themeToDark: string
   }
 }

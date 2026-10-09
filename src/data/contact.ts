@@ -8,6 +8,12 @@ export const CONTACT = {
   linkedinDisplay: "linkedin.com/in/kawe-longon",
 } as const
 
+/**
+ * Availability shown on the contact page. Set to `false` when you are
+ * fully booked: the badge turns grey and says so.
+ */
+export const AVAILABLE_FOR_WORK = true
+
 const ITALIAN_RESUME = "cv_kawe_longon.pdf"
 const ENGLISH_RESUME = "resume-kawe-longon.pdf"
 
