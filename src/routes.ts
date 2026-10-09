@@ -1,11 +1,11 @@
-export const VIEW_IDS = ["home", "projects", "timeline", "contact"] as const
+export const VIEW_IDS = ["home", "resume", "projects", "contact"] as const
 
 export type ViewId = (typeof VIEW_IDS)[number]
 
 const PATHS: Record<ViewId, string> = {
   home: "/",
+  resume: "/resume",
   projects: "/projects",
-  timeline: "/timeline",
   contact: "/contact",
 }
 
@@ -26,6 +26,8 @@ const stripSlashes = (path: string) => path.replace(/^\/+|\/+$/g, "")
 /** Turns a URL path into a route. Anything unknown falls back to home. */
 export const parseRoute = (pathname: string): ParsedRoute => {
   const [first = "", second, ...rest] = stripSlashes(pathname).split("/")
+  // The Resume page replaced the old Timeline page.
+  if (first === "timeline" && !second) return { view: "resume", projectSlug: null }
   const view = VIEW_IDS.find((id) => stripSlashes(PATHS[id]) === first)
   if (!view) return { view: "home", projectSlug: null }
   if (view === "projects" && second && rest.length === 0) return { view, projectSlug: second }

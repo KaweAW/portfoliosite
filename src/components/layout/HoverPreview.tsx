@@ -8,7 +8,7 @@ const HIDDEN = { opacity: 0, scale: 0.5, rotate: -5 }
 const VISIBLE = { opacity: 1, scale: 1, rotate: 0 }
 
 /**
- * Desktop-only image that trails the cursor while a project or timeline row is
+ * Desktop-only image that trails the cursor while a project row is
  * hovered or focused.
  *
  * It stays mounted and only animates in and out. Unmounting it between hovers

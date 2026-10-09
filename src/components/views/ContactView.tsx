@@ -4,7 +4,7 @@ import { itemVariants } from "../../animations"
 import { AvailabilityBadge } from "../contact/AvailabilityBadge"
 import { BriefForm } from "../contact/BriefForm"
 import { CopyEmail } from "../contact/CopyEmail"
-import { CONTACT, RESUME_FILES } from "../../data/contact"
+import { CONTACT } from "../../data/contact"
 import { useLayout } from "../../hooks/useLayout"
 import { PageShell } from "../ui/PageShell"
 
@@ -14,20 +14,16 @@ interface CardProps {
   hint: string
   href: string
   external?: boolean
-  download?: string
-  cursor?: string
   action?: ReactNode
 }
 
 /** One row of the contact list: an icon, a title, a short hint and an arrow. */
-const ContactCard = ({ icon, title, hint, href, external, download, cursor, action }: CardProps) => {
+const ContactCard = ({ icon, title, hint, href, external, action }: CardProps) => {
   const { t } = useLayout()
   return (
     <motion.li variants={itemVariants} className="flex items-stretch border border-white/20 transition-colors hover:border-white/50">
       <a
         href={href}
-        download={download}
-        data-cursor={cursor}
         {...(external && { target: "_blank", rel: "noreferrer" })}
         className="group flex min-w-0 flex-1 items-center gap-4 p-4 transition-colors md:hover:bg-white/5"
       >
@@ -42,7 +38,7 @@ const ContactCard = ({ icon, title, hint, href, external, download, cursor, acti
           <span className="truncate text-[10px] text-neutral-400 normal-case md:text-xs">{hint}</span>
         </span>
         <span aria-hidden="true" className="text-neutral-400 transition-transform md:group-hover:translate-x-1">
-          {download ? "↓" : "→"}
+          →
         </span>
         {external && <span className="sr-only">{t.a11y.opensInNewTab}</span>}
       </a>
@@ -52,14 +48,13 @@ const ContactCard = ({ icon, title, hint, href, external, download, cursor, acti
 }
 
 export const ContactView = () => {
-  const { t, language } = useLayout()
+  const { t } = useLayout()
   const copy = t.contact
-  const resumeFile = RESUME_FILES[language]
 
   return (
     <PageShell className="pt-16 md:pt-24">
       <div className="scrollbar-none grid flex-1 grid-cols-1 gap-8 overflow-y-auto px-1 pb-4 md:grid-cols-2 md:gap-12 md:px-0">
-        <div className="flex flex-col gap-6 md:gap-8">
+        <div className="flex flex-col gap-6 md:sticky md:top-0 md:gap-8 md:self-start">
           <div>
             <motion.p variants={itemVariants} className="mb-3 text-[10px] tracking-widest text-neutral-500 md:text-xs">
               ◆ {copy.eyebrow}
@@ -88,14 +83,6 @@ export const ContactView = () => {
             />
             <ContactCard icon="in" title="LinkedIn" hint={copy.cards.linkedinHint} href={CONTACT.linkedin} external />
             <ContactCard icon="</>" title="GitHub" hint={copy.cards.githubHint} href={CONTACT.github} external />
-            <ContactCard
-              icon="CV"
-              title={copy.cards.resumeTitle}
-              hint={resumeFile}
-              href={`/${resumeFile}`}
-              download={resumeFile}
-              cursor="SAVE ↓"
-            />
           </ul>
 
           <motion.div variants={itemVariants} className="border border-dashed border-white/30 p-4 md:p-5">

@@ -2,12 +2,12 @@ import type { Language, Translation } from "../types"
 
 /**
  * All user-facing copy, one object per language. `Translation` (types.ts)
- * makes TypeScript report any missing key or project/timeline entry.
+ * makes TypeScript report any missing key or project entry.
  */
 export const TRANSLATIONS: Record<Language, Translation> = {
   IT: {
     home: { subtitle: "SVILUPPATORE FRONTEND" },
-    nav: { home: "INDEX", projects: "LAVORI", timeline: "PERCORSO", contact: "INFO" },
+    nav: { home: "INDEX", projects: "LAVORI", resume: "CURRICULUM", resumeShort: "CV", contact: "ASSUMIMI" },
     projects: {
       title: "LAVORI",
       dir: "[ DIR: /PROGETTI/INDEX ]",
@@ -17,20 +17,6 @@ export const TRANSLATIONS: Record<Language, Translation> = {
         medical: { title: "STUDIO MEDICO", desc: "Sito web con sistema di prenotazione online." },
         portal: { title: "PORTALE INTERNO", desc: "Gestionale per dipendenti e rivenditori aziendali." },
         storyboard: { title: "STORYBOARD ARTIST", desc: "Sito portfolio per un artista di storyboard 2D." },
-      },
-    },
-    timeline: {
-      title: "PERCORSO",
-      ongoing: "IN CORSO",
-      axis: "Panoramica del percorso",
-      items: {
-        liceo: { title: "DOPPIO DIPLOMA LINGUISTICO", desc: "Conclusione percorso Liceo Brocchi (Bassano del Grappa)." },
-        julia: { title: "IMPIEGATO JULIA ITALIA", desc: "Azienda di arredamento." },
-        indonesia: { title: "CLINICA INDONESIA", desc: "Esperienza lavorativa internazionale." },
-        itsStart: { title: "ITS ALTO ADRIATICO", desc: "Inizio specializzazione sviluppo web." },
-        firstSite: { title: "PRIMO SITO COMMISSIONATO", desc: "Traguardo professionale freelance." },
-        stiga: { title: "DEV @ STIGA", desc: "Tirocinio e collaborazione continuativa: Flutter app bugfixing & React/TS portal rinnovo." },
-        itsDiploma: { title: "DIPLOMA ITS ALTO ADRIATICO", desc: "Conseguimento del diploma di specializzazione in sviluppo web." },
       },
     },
     contact: {
@@ -46,7 +32,6 @@ export const TRANSLATIONS: Record<Language, Translation> = {
           copyJokes: ["Copiata. Ora scrivi qualcosa di carino.", "Email copiata. Niente rimborsi.", "Preso. Ti aspetto.", "Copiata. Incolla con giudizio."],
           linkedinHint: "Scrivimi o collegati",
           githubHint: "Codice e progetti",
-          resumeTitle: "Scarica il CV",
         },
         include: { title: "COSA INCLUDERE", body: "In breve: di cosa hai bisogno, le tempistiche e un budget indicativo se ce l'hai. Più è concreto, più veloce posso risponderti." },
         form: {
@@ -63,9 +48,18 @@ export const TRANSLATIONS: Record<Language, Translation> = {
           more: "Altre informazioni",
           company: "Nome azienda",
           companyPlaceholder: "La tua azienda",
-          projectType: "Tipo di progetto",
-          projectTypeNone: "Scegli o lascia vuoto",
-          projectTypes: ["Sito web", "Web app", "App mobile", "Altro"],
+          fields: {
+            projectType: { label: "Tipo di progetto", placeholder: "Scegli o lascia vuoto", options: ["Sito web", "Web app", "E-commerce", "SaaS", "Sviluppo di API", "App mobile (basata sul web)", "Altro"] },
+            features: { label: "Funzionalità", placeholder: "Elenco di funzionalità", options: ["Autenticazione utenti (accesso / registrazione)", "Pannello di amministrazione", "Pagamenti (Stripe, PayPal)", "Database e operazioni CRUD", "Caricamento e archiviazione file", "Notifiche (email, SMS, push)", "Funzioni in tempo reale (WebSocket)", "Più lingue", "Ricerca"] },
+            technologies: { label: "Tecnologie preferite", placeholder: "Elenco di tecnologie", options: ["React", "Next.js", "TypeScript", "Node.js", "Firebase / Supabase", "Tailwind CSS", "Nessuna preferenza"] },
+            assets: { label: "Materiali", placeholder: "Elenco di materiali", options: ["Logo", "Linee guida del brand", "Testi", "Foto e immagini", "Mockup di design (Figma)", "Ancora niente"] },
+            audience: { label: "Pubblico di riferimento", placeholder: "Elenco di pubblici", options: ["Consumatori (B2C)", "Aziende (B2B)", "Team interno", "Studenti e formazione", "Pubblico generale"] },
+            hosting: { label: "Hosting", placeholder: "Scegli o lascia vuoto", options: ["Ho già un hosting", "Mi serve configurare l'hosting", "Non lo so ancora"] },
+            support: { label: "Supporto e manutenzione", placeholder: "Scegli o lascia vuoto", options: ["Nessuno", "Solo correzione di bug", "Manutenzione continua", "Non lo so ancora"] },
+            legal: { label: "Aspetti legali", placeholder: "Elenco di aspetti legali", options: ["Privacy policy / GDPR", "Consenso ai cookie", "Termini di servizio", "Conformità all'accessibilità", "Non lo so ancora"] },
+            priority: { label: "Priorità", placeholder: "Scegli o lascia vuoto", options: ["Bassa", "Normale", "Alta", "Urgente"] },
+          },
+          selected: "selezionati",
           deadline: "Scadenza prevista",
           send: "Invia",
           sending: "Invio...",
@@ -103,7 +97,7 @@ export const TRANSLATIONS: Record<Language, Translation> = {
 
   EN: {
     home: { subtitle: "FRONTEND DEVELOPER" },
-    nav: { home: "INDEX", projects: "WORK", timeline: "TIMELINE", contact: "INFO" },
+    nav: { home: "INDEX", projects: "WORK", resume: "RESUME", resumeShort: "RESUME", contact: "HIRE ME" },
     projects: {
       title: "WORK",
       dir: "[ DIR: /PROJECTS/INDEX ]",
@@ -113,20 +107,6 @@ export const TRANSLATIONS: Record<Language, Translation> = {
         medical: { title: "MEDICAL STUDIO", desc: "Website with an online booking system." },
         portal: { title: "INTERNAL PORTAL", desc: "Management software for employees and corporate dealers." },
         storyboard: { title: "STORYBOARD ARTIST", desc: "Portfolio website for a 2D storyboard artist." },
-      },
-    },
-    timeline: {
-      title: "TIMELINE",
-      ongoing: "ONGOING",
-      axis: "Timeline overview",
-      items: {
-        liceo: { title: "DOUBLE LINGUISTIC DIPLOMA", desc: "Graduation from Liceo Brocchi (Bassano del Grappa)." },
-        julia: { title: "OFFICE EMPLOYEE AT JULIA ITALIA", desc: "Furniture company." },
-        indonesia: { title: "INDONESIA CLINIC", desc: "International work experience." },
-        itsStart: { title: "ITS ALTO ADRIATICO", desc: "Began web development specialization." },
-        firstSite: { title: "FIRST COMMISSIONED WEBSITE", desc: "Freelance professional milestone." },
-        stiga: { title: "DEV @ STIGA", desc: "Ongoing internship and collaboration: Flutter app bugfixing & React/TS portal renewal." },
-        itsDiploma: { title: "ITS ALTO ADRIATICO DIPLOMA", desc: "Graduation in web development specialization." },
       },
     },
     contact: {
@@ -142,7 +122,6 @@ export const TRANSLATIONS: Record<Language, Translation> = {
           copyJokes: ["Copied. Now write something nice.", "Email copied. No take-backs.", "Got it. I will be waiting.", "Copied. Paste responsibly."],
           linkedinHint: "Message me or connect",
           githubHint: "Code and projects",
-          resumeTitle: "Download resume",
         },
         include: { title: "WHAT TO INCLUDE", body: "Briefly: what you need, the timeline and a budget range if you have one. The more concrete, the faster I can reply." },
         form: {
@@ -159,9 +138,18 @@ export const TRANSLATIONS: Record<Language, Translation> = {
           more: "More information",
           company: "Company name",
           companyPlaceholder: "Your company",
-          projectType: "Project type",
-          projectTypeNone: "Select or leave blank",
-          projectTypes: ["Website", "Web app", "Mobile app", "Other"],
+          fields: {
+            projectType: { label: "Project type", placeholder: "Select or leave blank", options: ["Website", "Web app", "E-commerce", "SaaS", "API development", "Mobile app (web-based)", "Other"] },
+            features: { label: "Features", placeholder: "List of features", options: ["User authentication (login / sign-up)", "Admin panel", "Payments (Stripe, PayPal)", "Database and CRUD operations", "File uploads and storage", "Notifications (email, SMS, push)", "Real-time features (WebSockets)", "Multiple languages", "Search"] },
+            technologies: { label: "Technology preferences", placeholder: "List of technologies", options: ["React", "Next.js", "TypeScript", "Node.js", "Firebase / Supabase", "Tailwind CSS", "No preference"] },
+            assets: { label: "Assets", placeholder: "List of assets", options: ["Logo", "Brand guidelines", "Written content", "Photos and images", "Design mockups (Figma)", "Nothing yet"] },
+            audience: { label: "Target audience", placeholder: "List of target audiences", options: ["Consumers (B2C)", "Businesses (B2B)", "Internal team", "Students and education", "General public"] },
+            hosting: { label: "Hosting", placeholder: "Select or leave blank", options: ["I already have hosting", "I need hosting set up", "Not sure yet"] },
+            support: { label: "Support and maintenance", placeholder: "Select or leave blank", options: ["None", "Bug fixes only", "Ongoing maintenance", "Not sure yet"] },
+            legal: { label: "Legal considerations", placeholder: "List of legal considerations", options: ["Privacy policy / GDPR", "Cookie consent", "Terms of service", "Accessibility compliance", "Not sure yet"] },
+            priority: { label: "Priority", placeholder: "Select or leave blank", options: ["Low", "Normal", "High", "Urgent"] },
+          },
+          selected: "selected",
           deadline: "Expected deadline",
           send: "Send",
           sending: "Sending...",
@@ -199,7 +187,7 @@ export const TRANSLATIONS: Record<Language, Translation> = {
 
   FR: {
     home: { subtitle: "DÉVELOPPEUR FRONTEND" },
-    nav: { home: "INDEX", projects: "TRAVAUX", timeline: "PARCOURS", contact: "INFO" },
+    nav: { home: "INDEX", projects: "TRAVAUX", resume: "CURRICULUM", resumeShort: "CV", contact: "EMBAUCHE" },
     projects: {
       title: "TRAVAUX",
       dir: "[ DIR: /PROJETS/INDEX ]",
@@ -209,20 +197,6 @@ export const TRANSLATIONS: Record<Language, Translation> = {
         medical: { title: "CABINET MÉDICAL", desc: "Site web avec système de réservation en ligne." },
         portal: { title: "PORTAIL INTERNE", desc: "Logiciel de gestion pour les employés et revendeurs." },
         storyboard: { title: "ARTISTE STORYBOARD", desc: "Site portfolio pour un artiste storyboard 2D." },
-      },
-    },
-    timeline: {
-      title: "PARCOURS",
-      ongoing: "EN COURS",
-      axis: "Aperçu du parcours",
-      items: {
-        liceo: { title: "DOUBLE DIPLÔME LINGUISTIQUE", desc: "Obtention du diplôme du Liceo Brocchi (Bassano del Grappa)." },
-        julia: { title: "EMPLOYÉ DE BUREAU CHEZ JULIA ITALIA", desc: "Entreprise d'ameublement." },
-        indonesia: { title: "CLINIQUE INDONÉSIE", desc: "Expérience de travail internationale." },
-        itsStart: { title: "ITS ALTO ADRIATICO", desc: "Début de la spécialisation en développement web." },
-        firstSite: { title: "PREMIER SITE COMMANDÉ", desc: "Étape professionnelle en freelance." },
-        stiga: { title: "DEV @ STIGA", desc: "Stage et collaboration continue : correction de bugs Flutter & renouvellement du portail React/TS." },
-        itsDiploma: { title: "DIPLÔME ITS ALTO ADRIATICO", desc: "Obtention du diplôme de spécialisation en développement web." },
       },
     },
     contact: {
@@ -238,7 +212,6 @@ export const TRANSLATIONS: Record<Language, Translation> = {
           copyJokes: ["Copié. Écris maintenant quelque chose de sympa.", "E-mail copié. Pas de remboursement.", "Reçu. Je t'attends.", "Copié. Colle avec modération."],
           linkedinHint: "Écris-moi ou connectons-nous",
           githubHint: "Code et projets",
-          resumeTitle: "Télécharger le CV",
         },
         include: { title: "À INCLURE", body: "En bref : ce dont tu as besoin, le calendrier et une fourchette de budget si tu en as une. Plus c'est concret, plus vite je peux répondre." },
         form: {
@@ -255,9 +228,18 @@ export const TRANSLATIONS: Record<Language, Translation> = {
           more: "Plus d'informations",
           company: "Nom de l'entreprise",
           companyPlaceholder: "Ton entreprise",
-          projectType: "Type de projet",
-          projectTypeNone: "Choisir ou laisser vide",
-          projectTypes: ["Site web", "Application web", "Application mobile", "Autre"],
+          fields: {
+            projectType: { label: "Type de projet", placeholder: "Choisir ou laisser vide", options: ["Site web", "Application web", "E-commerce", "SaaS", "Développement d'API", "Application mobile (web)", "Autre"] },
+            features: { label: "Fonctionnalités", placeholder: "Liste de fonctionnalités", options: ["Authentification (connexion / inscription)", "Panneau d'administration", "Paiements (Stripe, PayPal)", "Base de données et opérations CRUD", "Envoi et stockage de fichiers", "Notifications (e-mail, SMS, push)", "Temps réel (WebSockets)", "Plusieurs langues", "Recherche"] },
+            technologies: { label: "Technologies souhaitées", placeholder: "Liste de technologies", options: ["React", "Next.js", "TypeScript", "Node.js", "Firebase / Supabase", "Tailwind CSS", "Pas de préférence"] },
+            assets: { label: "Ressources", placeholder: "Liste de ressources", options: ["Logo", "Charte graphique", "Contenus rédigés", "Photos et images", "Maquettes (Figma)", "Rien pour l'instant"] },
+            audience: { label: "Public cible", placeholder: "Liste de publics", options: ["Particuliers (B2C)", "Entreprises (B2B)", "Équipe interne", "Étudiants et formation", "Grand public"] },
+            hosting: { label: "Hébergement", placeholder: "Choisir ou laisser vide", options: ["J'ai déjà un hébergement", "J'ai besoin d'un hébergement", "Pas encore décidé"] },
+            support: { label: "Support et maintenance", placeholder: "Choisir ou laisser vide", options: ["Aucun", "Corrections de bugs uniquement", "Maintenance continue", "Pas encore décidé"] },
+            legal: { label: "Aspects juridiques", placeholder: "Liste d'aspects juridiques", options: ["Politique de confidentialité / RGPD", "Consentement aux cookies", "Conditions d'utilisation", "Conformité accessibilité", "Pas encore décidé"] },
+            priority: { label: "Priorité", placeholder: "Choisir ou laisser vide", options: ["Basse", "Normale", "Haute", "Urgente"] },
+          },
+          selected: "sélectionnés",
           deadline: "Échéance prévue",
           send: "Envoyer",
           sending: "Envoi...",
@@ -295,7 +277,7 @@ export const TRANSLATIONS: Record<Language, Translation> = {
 
   DE: {
     home: { subtitle: "FRONTEND-ENTWICKLER" },
-    nav: { home: "INDEX", projects: "ARBEITEN", timeline: "TIMELINE", contact: "INFO" },
+    nav: { home: "INDEX", projects: "ARBEITEN", resume: "LEBENSLAUF", resumeShort: "CV", contact: "ANHEUERN" },
     projects: {
       title: "ARBEITEN",
       dir: "[ DIR: /PROJEKTE/INDEX ]",
@@ -305,20 +287,6 @@ export const TRANSLATIONS: Record<Language, Translation> = {
         medical: { title: "ARZTPRAXIS", desc: "Website mit einem Online-Buchungssystem." },
         portal: { title: "INTERNES PORTAL", desc: "Managementsystem für Mitarbeiter und Händler." },
         storyboard: { title: "STORYBOARD-KÜNSTLER", desc: "Portfolio-Website für einen 2D-Storyboard-Künstler." },
-      },
-    },
-    timeline: {
-      title: "ZEITLEISTE",
-      ongoing: "LAUFEND",
-      axis: "Überblick über den Werdegang",
-      items: {
-        liceo: { title: "DOPPELTES SPRACHDIPLOM", desc: "Abschluss am Liceo Brocchi (Bassano del Grappa)." },
-        julia: { title: "ANGESTELLTER BEI JULIA ITALIA", desc: "Möbelunternehmen." },
-        indonesia: { title: "KLINIK IN INDONESIEN", desc: "Internationale Arbeitserfahrung." },
-        itsStart: { title: "ITS ALTO ADRIATICO", desc: "Beginn der Spezialisierung auf Webentwicklung." },
-        firstSite: { title: "ERSTE AUFTRAGSWEBSITE", desc: "Meilenstein als freiberuflicher Entwickler." },
-        stiga: { title: "DEV @ STIGA", desc: "Praktikum und laufende Zusammenarbeit: Flutter-App Bugfixing & React/TS Portal-Erneuerung." },
-        itsDiploma: { title: "ITS ALTO ADRIATICO DIPLOM", desc: "Abschluss in der Spezialisierung auf Webentwicklung." },
       },
     },
     contact: {
@@ -334,7 +302,6 @@ export const TRANSLATIONS: Record<Language, Translation> = {
           copyJokes: ["Kopiert. Schreib jetzt etwas Nettes.", "E-Mail kopiert. Kein Umtausch.", "Verstanden. Ich warte.", "Kopiert. Mit Bedacht einfügen."],
           linkedinHint: "Schreib mir oder vernetze dich",
           githubHint: "Code und Projekte",
-          resumeTitle: "Lebenslauf herunterladen",
         },
         include: { title: "WAS DAZUGEHÖRT", body: "Kurz: was du brauchst, der Zeitplan und, falls vorhanden, ein Budgetrahmen. Je konkreter, desto schneller kann ich antworten." },
         form: {
@@ -351,9 +318,18 @@ export const TRANSLATIONS: Record<Language, Translation> = {
           more: "Weitere Informationen",
           company: "Firmenname",
           companyPlaceholder: "Deine Firma",
-          projectType: "Projektart",
-          projectTypeNone: "Auswählen oder leer lassen",
-          projectTypes: ["Website", "Web-App", "Mobile App", "Sonstiges"],
+          fields: {
+            projectType: { label: "Projektart", placeholder: "Auswählen oder leer lassen", options: ["Website", "Web-App", "E-Commerce", "SaaS", "API-Entwicklung", "Mobile App (webbasiert)", "Sonstiges"] },
+            features: { label: "Funktionen", placeholder: "Liste von Funktionen", options: ["Benutzer-Authentifizierung (Login / Registrierung)", "Admin-Bereich", "Zahlungen (Stripe, PayPal)", "Datenbank und CRUD-Operationen", "Datei-Upload und Speicherung", "Benachrichtigungen (E-Mail, SMS, Push)", "Echtzeit-Funktionen (WebSockets)", "Mehrere Sprachen", "Suche"] },
+            technologies: { label: "Technologiewünsche", placeholder: "Liste von Technologien", options: ["React", "Next.js", "TypeScript", "Node.js", "Firebase / Supabase", "Tailwind CSS", "Keine Präferenz"] },
+            assets: { label: "Materialien", placeholder: "Liste von Materialien", options: ["Logo", "Markenrichtlinien", "Texte", "Fotos und Bilder", "Design-Mockups (Figma)", "Noch nichts"] },
+            audience: { label: "Zielgruppe", placeholder: "Liste von Zielgruppen", options: ["Endkunden (B2C)", "Unternehmen (B2B)", "Internes Team", "Studierende und Bildung", "Allgemeine Öffentlichkeit"] },
+            hosting: { label: "Hosting", placeholder: "Auswählen oder leer lassen", options: ["Ich habe schon Hosting", "Ich brauche Hosting", "Noch unklar"] },
+            support: { label: "Support und Wartung", placeholder: "Auswählen oder leer lassen", options: ["Keiner", "Nur Fehlerbehebung", "Laufende Wartung", "Noch unklar"] },
+            legal: { label: "Rechtliche Aspekte", placeholder: "Liste rechtlicher Aspekte", options: ["Datenschutzerklärung / DSGVO", "Cookie-Einwilligung", "Nutzungsbedingungen", "Barrierefreiheit", "Noch unklar"] },
+            priority: { label: "Priorität", placeholder: "Auswählen oder leer lassen", options: ["Niedrig", "Normal", "Hoch", "Dringend"] },
+          },
+          selected: "ausgewählt",
           deadline: "Gewünschter Termin",
           send: "Senden",
           sending: "Wird gesendet...",
@@ -391,7 +367,7 @@ export const TRANSLATIONS: Record<Language, Translation> = {
 
   RU: {
     home: { subtitle: "ФРОНТЕНД-РАЗРАБОТЧИК" },
-    nav: { home: "INDEX", projects: "РАБОТЫ", timeline: "ИСТОРИЯ", contact: "ИНФО" },
+    nav: { home: "INDEX", projects: "РАБОТЫ", resume: "РЕЗЮМЕ", resumeShort: "РЕЗЮМЕ", contact: "НАНЯТЬ" },
     projects: {
       title: "РАБОТЫ",
       dir: "[ ДИР: /PROJECTS/INDEX ]",
@@ -401,20 +377,6 @@ export const TRANSLATIONS: Record<Language, Translation> = {
         medical: { title: "МЕДИЦИНСКИЙ ЦЕНТР", desc: "Веб-сайт с системой онлайн-бронирования." },
         portal: { title: "ВНУТРЕННИЙ ПОРТАЛ", desc: "Система управления для сотрудников и корпоративных дилеров." },
         storyboard: { title: "ХУДОЖНИК РАСКАДРОВКИ", desc: "Сайт-портфолио для 2D художника раскадровки." },
-      },
-    },
-    timeline: {
-      title: "ХРОНОЛОГИЯ",
-      ongoing: "В ПРОЦЕССЕ",
-      axis: "Обзор пути",
-      items: {
-        liceo: { title: "ДВОЙНОЙ ЯЗЫКОВОЙ ДИПЛОМ", desc: "Окончание лингвистического лицея Brocchi (Бассано-дель-Граппа)." },
-        julia: { title: "СЛУЖАЩИЙ В JULIA ITALIA", desc: "Мебельная компания." },
-        indonesia: { title: "КЛИНИКА В ИНДОНЕЗИИ", desc: "Международный рабочий опыт." },
-        itsStart: { title: "ITS ALTO ADRIATICO", desc: "Начало специализации в веб-разработке." },
-        firstSite: { title: "ПЕРВЫЙ ЗАКАЗНОЙ САЙТ", desc: "Важный профессиональный рубеж во фрилансе." },
-        stiga: { title: "DEV @ STIGA", desc: "Стажировка и долгосрочное сотрудничество: исправление багов во Flutter и обновление внутреннего портала на React/TS." },
-        itsDiploma: { title: "ДИПЛОМ ITS ALTO ADRIATICO", desc: "Получение диплома по специализации веб-разработки." },
       },
     },
     contact: {
@@ -430,7 +392,6 @@ export const TRANSLATIONS: Record<Language, Translation> = {
           copyJokes: ["Скопировано. Теперь напиши что-нибудь хорошее.", "Email скопирован. Возврату не подлежит.", "Принято. Буду ждать.", "Скопировано. Вставляй с умом."],
           linkedinHint: "Напиши мне или добавься в контакты",
           githubHint: "Код и проекты",
-          resumeTitle: "Скачать резюме",
         },
         include: { title: "ЧТО УКАЗАТЬ", body: "Коротко: что тебе нужно, сроки и примерный бюджет, если он есть. Чем конкретнее, тем быстрее я отвечу." },
         form: {
@@ -447,9 +408,18 @@ export const TRANSLATIONS: Record<Language, Translation> = {
           more: "Дополнительно",
           company: "Название компании",
           companyPlaceholder: "Твоя компания",
-          projectType: "Тип проекта",
-          projectTypeNone: "Выбери или оставь пустым",
-          projectTypes: ["Сайт", "Веб-приложение", "Мобильное приложение", "Другое"],
+          fields: {
+            projectType: { label: "Тип проекта", placeholder: "Выбери или оставь пустым", options: ["Сайт", "Веб-приложение", "Интернет-магазин", "SaaS", "Разработка API", "Мобильное приложение (веб)", "Другое"] },
+            features: { label: "Функции", placeholder: "Список функций", options: ["Авторизация (вход / регистрация)", "Панель администратора", "Платежи (Stripe, PayPal)", "База данных и CRUD", "Загрузка и хранение файлов", "Уведомления (email, SMS, push)", "Реальное время (WebSockets)", "Несколько языков", "Поиск"] },
+            technologies: { label: "Предпочтения по технологиям", placeholder: "Список технологий", options: ["React", "Next.js", "TypeScript", "Node.js", "Firebase / Supabase", "Tailwind CSS", "Без предпочтений"] },
+            assets: { label: "Материалы", placeholder: "Список материалов", options: ["Логотип", "Брендбук", "Тексты", "Фото и изображения", "Макеты дизайна (Figma)", "Пока ничего"] },
+            audience: { label: "Целевая аудитория", placeholder: "Список аудиторий", options: ["Частные клиенты (B2C)", "Компании (B2B)", "Внутренняя команда", "Студенты и образование", "Широкая публика"] },
+            hosting: { label: "Хостинг", placeholder: "Выбери или оставь пустым", options: ["Хостинг уже есть", "Нужно настроить хостинг", "Пока не знаю"] },
+            support: { label: "Поддержка и обслуживание", placeholder: "Выбери или оставь пустым", options: ["Не нужна", "Только исправление ошибок", "Постоянное обслуживание", "Пока не знаю"] },
+            legal: { label: "Юридические вопросы", placeholder: "Список юридических вопросов", options: ["Политика конфиденциальности / GDPR", "Согласие на cookie", "Условия использования", "Доступность (accessibility)", "Пока не знаю"] },
+            priority: { label: "Приоритет", placeholder: "Выбери или оставь пустым", options: ["Низкий", "Обычный", "Высокий", "Срочный"] },
+          },
+          selected: "выбрано",
           deadline: "Желаемый срок",
           send: "Отправить",
           sending: "Отправка...",

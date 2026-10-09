@@ -35,6 +35,7 @@ export const PROJECTS: readonly Project[] = [
     slug: "medical-studio",
     url: "https://www.dottmaicobattistello.it/",
     stack: ["Next.js", "React", "TypeScript", "Tailwind CSS", "shadcn/ui", "Radix UI", "Nodemailer", "Vercel"],
+    repo: "https://github.com/luisacochran-cmyk/dott.maicobattistello",
     image: { src: "/medical-desktop.webp", width: 1400, height: 840 },
     mobileImage: { src: "/medical-mobile.webp", width: 1200, height: 800 },
   },
