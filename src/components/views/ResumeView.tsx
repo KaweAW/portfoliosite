@@ -98,7 +98,7 @@ export const ResumeView = () => {
                 <li key={item.id} className="border border-white/20 p-4 transition-colors hover:border-white/50 md:p-5">
                   <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
                     <h3 className="text-lg font-bold tracking-tighter md:text-xl">{text.title}</h3>
-                    {range(item.start, item.end, item.ongoing)}
+                    {range(item.start, item.end, item.ongoing ?? false)}
                   </div>
                   <p className="mt-1 text-[10px] tracking-widest text-neutral-400 md:text-xs">{text.kind}</p>
                   <div className="mt-4">
