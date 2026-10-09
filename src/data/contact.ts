@@ -16,12 +16,13 @@ export const AVAILABLE_FOR_WORK = true
 
 const ITALIAN_RESUME = "cv_kawe_longon.pdf"
 const ENGLISH_RESUME = "resume-kawe-longon.pdf"
+const FRENCH_RESUME = "cv-kawe-longon-fr.pdf"
 
 /** Resume PDF offered for each language (files live in `public/`). */
 export const RESUME_FILES: Record<Language, string> = {
   IT: ITALIAN_RESUME,
   EN: ENGLISH_RESUME,
-  FR: ENGLISH_RESUME,
+  FR: FRENCH_RESUME,
   DE: ENGLISH_RESUME,
   RU: ENGLISH_RESUME,
 }
