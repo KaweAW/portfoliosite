@@ -4,7 +4,7 @@ export type Language = "EN" | "IT" | "FR" | "DE" | "RU"
 
 /* ---------- Content that does not change between languages ---------- */
 
-export type ProjectId = "medical" | "portal" | "storyboard" | "scaletta" | "templateZero"
+export type ProjectId = "staffManager" | "medical" | "portal" | "storyboard" | "scaletta" | "templateZero"
 
 export interface ProjectImage {
   src: string
@@ -38,7 +38,7 @@ export interface CaseStudyCopy {
 }
 
 export type ExperienceId = "stiga"
-export type ResumeProjectId = "scaletta" | "templateZero" | "medical" | "storyboard" | "shoes"
+export type ResumeProjectId = "staffManager" | "scaletta" | "templateZero" | "medical" | "storyboard"
 export type EducationId = "its" | "liceo"
 export type SkillGroupId = "frontend" | "backend" | "mobile" | "quality"
 

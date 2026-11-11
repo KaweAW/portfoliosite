@@ -7,6 +7,73 @@ type CaseStudies = Record<ProjectId, { EN: CaseStudyCopy } & Partial<Record<Lang
  * language without its own version falls back to (see `caseStudyFor`).
  */
 export const CASE_STUDIES: CaseStudies = {
+  staffManager: {
+    EN: {
+      role: "Design and development. My own product, built for the bar in Asolo where I work.",
+      challenge:
+        "At Caffè Commercio in Asolo the weekly shifts started on a sheet of paper, ended up as a photo in the WhatsApp group and changed three times. Nobody could see at a glance who was free, and the 11 hours of rest that Italian law requires between shifts were easy to miss.",
+      solution:
+        "A web app the owner runs from a phone: copy last week, fix the requests, publish. Each employee sees their own shifts, asks for days off, proposes swaps and reports the hours actually worked; at the end of the month the owner downloads the hours for the payroll consultant. The bar uses it every week.",
+      highlights: [
+        "Before a shift is assigned, the app lists who is free and warns, without blocking, when someone would rest less than 11 hours.",
+        "No server of its own: every rule lives in Postgres (row-level security, one SECURITY DEFINER function per multi-step action), so a modified client cannot get around it. 17 SQL test suites check who can read and write what.",
+        "An activity log written by the database itself, that nobody can edit and where pay never appears.",
+        "Subscriptions with Stripe (checkout, customer portal, webhooks), a free trial and push notifications through Netlify Functions.",
+      ],
+    },
+    IT: {
+      role: "Progettazione e sviluppo. Un mio prodotto, nato per il bar di Asolo in cui lavoro.",
+      challenge:
+        "Al Caffè Commercio di Asolo i turni della settimana partivano da un foglio, finivano in una foto nel gruppo WhatsApp e cambiavano tre volte. Nessuno vedeva al volo chi era libero, e le 11 ore di riposo tra un turno e l'altro previste dalla legge erano facili da sbagliare.",
+      solution:
+        "Una web app che il titolare usa dal telefono: copia la settimana prima, sistema le richieste, pubblica. Ogni dipendente vede i suoi turni, chiede i giorni liberi, propone scambi e segnala le ore lavorate davvero; a fine mese il titolare scarica le ore per il consulente del lavoro. Il bar la usa ogni settimana.",
+      highlights: [
+        "Prima di assegnare un turno, l'app mostra chi è libero e avvisa, senza bloccare, quando qualcuno riposerebbe meno di 11 ore.",
+        "Nessun server proprio: tutte le regole stanno in Postgres (row-level security, una funzione SECURITY DEFINER per ogni azione in più passaggi), così un client modificato non può aggirarle. 17 suite di test SQL controllano chi può leggere e scrivere cosa.",
+        "Un registro attività scritto dal database stesso, che nessuno può modificare e in cui le paghe non compaiono mai.",
+        "Abbonamenti con Stripe (checkout, portale clienti, webhook), prova gratuita e notifiche push con Netlify Functions.",
+      ],
+    },
+    FR: {
+      role: "Conception et développement. Mon propre produit, créé pour le bar d'Asolo où je travaille.",
+      challenge:
+        "Au Caffè Commercio d'Asolo, les services de la semaine commençaient sur une feuille, finissaient en photo dans le groupe WhatsApp et changeaient trois fois. Personne ne voyait d'un coup d'œil qui était libre, et les 11 heures de repos entre deux services exigées par la loi italienne étaient faciles à oublier.",
+      solution:
+        "Une application web que le gérant utilise depuis son téléphone : copier la semaine précédente, régler les demandes, publier. Chaque employé voit ses services, demande ses jours de congé, propose des échanges et déclare les heures réellement travaillées ; à la fin du mois, le gérant télécharge les heures pour le gestionnaire de paie. Le bar l'utilise chaque semaine.",
+      highlights: [
+        "Avant d'attribuer un service, l'application montre qui est libre et avertit, sans bloquer, quand quelqu'un se reposerait moins de 11 heures.",
+        "Aucun serveur propre : toutes les règles vivent dans Postgres (row-level security, une fonction SECURITY DEFINER par action en plusieurs étapes), donc un client modifié ne peut pas les contourner. 17 suites de tests SQL vérifient qui peut lire et écrire quoi.",
+        "Un journal d'activité écrit par la base de données elle-même, que personne ne peut modifier et où les salaires n'apparaissent jamais.",
+        "Abonnements avec Stripe (paiement, portail client, webhooks), essai gratuit et notifications push via Netlify Functions.",
+      ],
+    },
+    DE: {
+      role: "Konzept und Entwicklung. Mein eigenes Produkt, entstanden für die Bar in Asolo, in der ich arbeite.",
+      challenge:
+        "Im Caffè Commercio in Asolo begann der Wochenplan auf einem Blatt Papier, landete als Foto in der WhatsApp-Gruppe und änderte sich dreimal. Niemand sah auf einen Blick, wer frei war, und die 11 Stunden Ruhezeit zwischen zwei Schichten, die das italienische Gesetz verlangt, gingen leicht unter.",
+      solution:
+        "Eine Web-App, die der Inhaber am Handy bedient: Vorwoche kopieren, Wünsche einarbeiten, veröffentlichen. Alle Mitarbeitenden sehen ihre Schichten, beantragen freie Tage, schlagen Tausche vor und melden die tatsächlich gearbeiteten Stunden; am Monatsende lädt der Inhaber die Stunden für das Lohnbüro herunter. Die Bar nutzt sie jede Woche.",
+      highlights: [
+        "Bevor eine Schicht vergeben wird, zeigt die App, wer frei ist, und warnt, ohne zu blockieren, wenn jemand weniger als 11 Stunden Ruhe hätte.",
+        "Kein eigener Server: Alle Regeln liegen in Postgres (Row-Level-Security, eine SECURITY-DEFINER-Funktion pro mehrstufiger Aktion), sodass ein veränderter Client sie nicht umgehen kann. 17 SQL-Testsuiten prüfen, wer was lesen und schreiben darf.",
+        "Ein Aktivitätsprotokoll, das die Datenbank selbst schreibt, das niemand ändern kann und in dem Löhne nie auftauchen.",
+        "Abos mit Stripe (Checkout, Kundenportal, Webhooks), kostenlose Testphase und Push-Benachrichtigungen über Netlify Functions.",
+      ],
+    },
+    RU: {
+      role: "Проектирование и разработка. Мой собственный продукт, созданный для бара в Азоло, где я работаю.",
+      challenge:
+        "В Caffè Commercio в Азоло график на неделю начинался на листке бумаги, заканчивался фотографией в группе WhatsApp и менялся по три раза. Никто не видел сразу, кто свободен, а 11 часов отдыха между сменами, которых требует итальянский закон, легко было пропустить.",
+      solution:
+        "Веб-приложение, которым владелец пользуется с телефона: скопировать прошлую неделю, учесть просьбы, опубликовать. Каждый сотрудник видит свои смены, просит выходные, предлагает обмен и отмечает реально отработанные часы; в конце месяца владелец скачивает часы для бухгалтера по зарплате. Бар пользуется им каждую неделю.",
+      highlights: [
+        "Перед назначением смены приложение показывает, кто свободен, и предупреждает, не блокируя, если у кого-то останется меньше 11 часов отдыха.",
+        "Без собственного сервера: все правила находятся в Postgres (row-level security, функция SECURITY DEFINER для каждого многошагового действия), поэтому изменённый клиент не может их обойти. 17 наборов SQL-тестов проверяют, кто что может читать и записывать.",
+        "Журнал действий, который пишет сама база данных: его никто не может изменить, и зарплаты в нём никогда не появляются.",
+        "Подписки через Stripe (оплата, клиентский портал, вебхуки), бесплатный пробный период и push-уведомления через Netlify Functions.",
+      ],
+    },
+  },
   scaletta: {
     EN: {
       role: "Design and development. Personal project, built for my own cover band.",
