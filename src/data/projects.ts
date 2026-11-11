@@ -13,6 +13,14 @@ import type { Project } from "../types"
  */
 export const PROJECTS: readonly Project[] = [
   {
+    id: "staffManager",
+    slug: "staff-manager",
+    url: "https://staff-manager.it/",
+    stack: ["React", "TypeScript", "Vite", "Tailwind CSS", "Supabase", "PostgreSQL", "Stripe", "Netlify Functions", "Vitest"],
+    image: { src: "/staff-manager-desktop.webp", width: 1400, height: 840 },
+    mobileImage: { src: "/staff-manager-mobile.webp", width: 1200, height: 800 },
+  },
+  {
     id: "scaletta",
     slug: "scaletta",
     url: "https://test-scaletta.netlify.app/",

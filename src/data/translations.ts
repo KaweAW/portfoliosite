@@ -12,6 +12,7 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       title: "LAVORI",
       dir: "[ DIR: /PROGETTI/INDEX ]",
       items: {
+        staffManager: { title: "STAFF MANAGER", desc: "App per i turni di bar e ristoranti, usata ogni giorno in un bar di Asolo." },
         scaletta: { title: "SCALETTA", desc: "App per le scalette di una band: accordi, modalità palco e condivisione live, anche offline." },
         templateZero: { title: "TEMPLATE ZERO", desc: "Template di sito multilingua e menu con QR code per ristoranti, bar e caffè." },
         medical: { title: "STUDIO MEDICO", desc: "Sito web con sistema di prenotazione online." },
@@ -101,6 +102,7 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       title: "WORK",
       dir: "[ DIR: /PROJECTS/INDEX ]",
       items: {
+        staffManager: { title: "STAFF MANAGER", desc: "Shift planning for bars and restaurants, in daily use at a café in Asolo." },
         scaletta: { title: "SCALETTA", desc: "Setlist app for bands: chord charts, stage mode and live sharing, even offline." },
         templateZero: { title: "TEMPLATE ZERO", desc: "Multilingual website and QR table menu template for restaurants, bars and cafes." },
         medical: { title: "MEDICAL STUDIO", desc: "Website with an online booking system." },
@@ -190,6 +192,7 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       title: "TRAVAUX",
       dir: "[ DIR: /PROJETS/INDEX ]",
       items: {
+        staffManager: { title: "STAFF MANAGER", desc: "Planning des équipes pour bars et restaurants, utilisé chaque jour dans un café d'Asolo." },
         scaletta: { title: "SCALETTA", desc: "Application de setlists pour groupes : grilles d'accords, mode scène et partage en direct, même hors ligne." },
         templateZero: { title: "TEMPLATE ZERO", desc: "Modèle de site multilingue et de menu QR pour restaurants, bars et cafés." },
         medical: { title: "CABINET MÉDICAL", desc: "Site web avec système de réservation en ligne." },
@@ -279,6 +282,7 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       title: "ARBEITEN",
       dir: "[ DIR: /PROJEKTE/INDEX ]",
       items: {
+        staffManager: { title: "STAFF MANAGER", desc: "Schichtplanung für Bars und Restaurants, täglich im Einsatz in einem Café in Asolo." },
         scaletta: { title: "SCALETTA", desc: "Setlist-App für Bands: Akkordblätter, Bühnenmodus und Live-Sharing, auch offline." },
         templateZero: { title: "TEMPLATE ZERO", desc: "Mehrsprachige Website- und QR-Menü-Vorlage für Restaurants, Bars und Cafés." },
         medical: { title: "ARZTPRAXIS", desc: "Website mit einem Online-Buchungssystem." },
@@ -368,6 +372,7 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       title: "РАБОТЫ",
       dir: "[ ДИР: /PROJECTS/INDEX ]",
       items: {
+        staffManager: { title: "STAFF MANAGER", desc: "График смен для баров и ресторанов, им каждый день пользуются в кафе в Азоло." },
         scaletta: { title: "SCALETTA", desc: "Приложение для сет-листов групп: аккорды, режим сцены и совместный доступ, работает офлайн." },
         templateZero: { title: "TEMPLATE ZERO", desc: "Шаблон многоязычного сайта и QR-меню для ресторанов, баров и кафе." },
         medical: { title: "МЕДИЦИНСКИЙ ЦЕНТР", desc: "Веб-сайт с системой онлайн-бронирования." },

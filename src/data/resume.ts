@@ -37,6 +37,13 @@ export interface ResumeProject {
 }
 
 export const RESUME_PROJECTS: readonly ResumeProject[] = [
+  {
+    id: "staffManager",
+    projectId: "staffManager",
+    start: { year: 2026, month: 5 },
+    ongoing: true,
+    stack: ["React", "TypeScript", "Supabase", "Stripe"],
+  },
   { id: "scaletta", projectId: "scaletta", start: { year: 2026, month: 10 }, ongoing: true, stack: ["React", "TypeScript", "Dexie", "Supabase"] },
   { id: "templateZero", projectId: "templateZero", start: { year: 2026, month: 10 }, stack: ["Next.js 15", "TypeScript", "Tailwind 4"] },
   {
@@ -47,12 +54,6 @@ export const RESUME_PROJECTS: readonly ResumeProject[] = [
     stack: ["Next.js", "Tailwind CSS", "Radix UI"],
   },
   { id: "storyboard", projectId: "storyboard", start: { year: 2025, month: 9 }, stack: ["Next.js", "Tailwind CSS", "Radix UI"] },
-  {
-    id: "shoes",
-    start: { year: 2026, month: 7 },
-    stack: ["React", "TypeScript", "SASS Modules", "Vite"],
-    code: "https://github.com/KaweAW/on-running-challenge",
-  },
 ]
 
 export interface ResumeEducation {
@@ -89,6 +90,7 @@ export const SKILLS: Record<SkillGroupId, readonly Skill[]> = {
   backend: [
     { name: "PostgreSQL (row-level security)", primary: true },
     { name: "Supabase", primary: true },
+    { name: "Stripe" },
     { name: "Node.js" },
     { name: "IndexedDB (Dexie)" },
     { name: "Zod" },

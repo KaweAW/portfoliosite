@@ -53,6 +53,15 @@ export const RESUME_COPY: Record<Language, ResumeCopy> = {
       live: "Live site",
       code: "Source code",
       items: {
+        staffManager: {
+          title: "Staff Manager",
+          kind: "Shift planning web app (PWA)",
+          bullets: [
+            "Built with Caffè Commercio in Asolo (Italy) and in daily use there: the week planned from a phone, time-off requests, shift swaps between colleagues and a monthly hours report for the payroll consultant.",
+            "Every rule lives in Postgres with no server of its own: row-level security for owners, managers and employees, a SECURITY DEFINER function for each multi-step action and an activity log written by the database that nobody can edit; 17 SQL test suites and 84 unit tests.",
+            "Warns before assigning a shift that leaves less than the 11 hours of rest required by Italian law; Stripe subscriptions (checkout, customer portal, webhooks) and push notifications through Netlify Functions.",
+          ],
+        },
         scaletta: {
           title: "Scaletta",
           kind: "Offline-first setlist app (PWA)",
@@ -84,13 +93,6 @@ export const RESUME_COPY: Record<Language, ResumeCopy> = {
           kind: "Client project",
           bullets: [
             "Media-rich portfolio with 2D animation and Disney/Netflix storyboard showreels, using Vimeo API embeds and custom Radix UI modal players for smooth playback on mobile and desktop.",
-          ],
-        },
-        shoes: {
-          title: "Shoes discovery quiz",
-          kind: "Personal project",
-          bullets: [
-            "Modular product discovery app with no third-party UI library (100/100 Lighthouse), built around an isolated state machine (useQuiz.ts) with stack-based history snapshots and weighted recommendations.",
           ],
         },
       },
@@ -189,6 +191,15 @@ export const RESUME_COPY: Record<Language, ResumeCopy> = {
       live: "Vedi il sito",
       code: "Codice sorgente",
       items: {
+        staffManager: {
+          title: "Staff Manager",
+          kind: "Web app per i turni (PWA)",
+          bullets: [
+            "Sviluppata con il Caffè Commercio di Asolo, che la usa ogni giorno: la settimana pianificata dal telefono, richieste di ferie, scambi di turno tra colleghi e il report mensile delle ore per il consulente del lavoro.",
+            "Tutte le regole stanno in Postgres, senza un server proprio: row-level security per titolari, responsabili e dipendenti, una funzione SECURITY DEFINER per ogni azione in più passaggi e un registro attività scritto dal database che nessuno può modificare; 17 suite di test SQL e 84 test unitari.",
+            "Avvisa prima di assegnare un turno che lascia meno delle 11 ore di riposo previste dalla legge (D.Lgs. 66/2003); abbonamenti Stripe (checkout, portale clienti, webhook) e notifiche push con Netlify Functions.",
+          ],
+        },
         scaletta: {
           title: "Scaletta",
           kind: "App offline-first per scalette musicali (PWA)",
@@ -220,13 +231,6 @@ export const RESUME_COPY: Record<Language, ResumeCopy> = {
           kind: "Progetto per cliente",
           bullets: [
             "Portfolio ricco di contenuti multimediali con showreel di animazione 2D e storyboard Disney/Netflix, con embed API Vimeo e player modali Radix UI personalizzati per una riproduzione fluida su mobile e desktop.",
-          ],
-        },
-        shoes: {
-          title: "Quiz per scegliere le scarpe",
-          kind: "Progetto personale",
-          bullets: [
-            "Web app modulare per la scoperta di prodotti, senza librerie UI di terze parti (Lighthouse 100/100), costruita attorno a una state machine isolata (useQuiz.ts) con snapshot della cronologia a stack e raccomandazioni pesate.",
           ],
         },
       },
@@ -325,6 +329,15 @@ export const RESUME_COPY: Record<Language, ResumeCopy> = {
       live: "Voir le site",
       code: "Code source",
       items: {
+        staffManager: {
+          title: "Staff Manager",
+          kind: "Application de planning des équipes (PWA)",
+          bullets: [
+            "Développée avec le Caffè Commercio d'Asolo (Italie), qui l'utilise chaque jour : la semaine planifiée depuis un téléphone, demandes de congés, échanges de services entre collègues et rapport mensuel des heures pour le gestionnaire de paie.",
+            "Toutes les règles vivent dans Postgres, sans serveur propre : row-level security pour les gérants, responsables et employés, une fonction SECURITY DEFINER pour chaque action en plusieurs étapes et un journal d'activité écrit par la base de données que personne ne peut modifier ; 17 suites de tests SQL et 84 tests unitaires.",
+            "Avertit avant d'attribuer un service qui laisse moins des 11 heures de repos exigées par la loi italienne ; abonnements Stripe (paiement, portail client, webhooks) et notifications push via Netlify Functions.",
+          ],
+        },
         scaletta: {
           title: "Scaletta",
           kind: "Application offline-first de setlists (PWA)",
@@ -356,13 +369,6 @@ export const RESUME_COPY: Record<Language, ResumeCopy> = {
           kind: "Projet client",
           bullets: [
             "Portfolio riche en médias avec des showreels d'animation 2D et de storyboards Disney/Netflix, avec intégrations de l'API Vimeo et lecteurs modaux Radix UI personnalisés pour une lecture fluide sur mobile et ordinateur.",
-          ],
-        },
-        shoes: {
-          title: "Quiz de choix de chaussures",
-          kind: "Projet personnel",
-          bullets: [
-            "Application modulaire de découverte de produits, sans bibliothèque UI tierce (Lighthouse 100/100), construite autour d'une machine à états isolée (useQuiz.ts) avec des instantanés d'historique en pile et des recommandations pondérées.",
           ],
         },
       },
@@ -461,6 +467,15 @@ export const RESUME_COPY: Record<Language, ResumeCopy> = {
       live: "Live-Seite",
       code: "Quellcode",
       items: {
+        staffManager: {
+          title: "Staff Manager",
+          kind: "Web-App für Schichtplanung (PWA)",
+          bullets: [
+            "Gemeinsam mit dem Caffè Commercio in Asolo (Italien) entwickelt und dort täglich im Einsatz: Wochenplanung am Handy, Urlaubsanträge, Schichttausch unter Kollegen und ein monatlicher Stundenbericht für das Lohnbüro.",
+            "Alle Regeln liegen in Postgres, ohne eigenen Server: Row-Level-Security für Inhaber, Manager und Mitarbeitende, eine SECURITY-DEFINER-Funktion für jede mehrstufige Aktion und ein von der Datenbank geschriebenes Aktivitätsprotokoll, das niemand ändern kann; 17 SQL-Testsuiten und 84 Unit-Tests.",
+            "Warnt vor dem Zuweisen einer Schicht, wenn weniger als die gesetzlich vorgeschriebenen 11 Stunden Ruhezeit bleiben; Stripe-Abos (Checkout, Kundenportal, Webhooks) und Push-Benachrichtigungen über Netlify Functions.",
+          ],
+        },
         scaletta: {
           title: "Scaletta",
           kind: "Offline-first-App für Setlisten (PWA)",
@@ -492,13 +507,6 @@ export const RESUME_COPY: Record<Language, ResumeCopy> = {
           kind: "Kundenprojekt",
           bullets: [
             "Medienreiches Portfolio mit 2D-Animations- und Disney/Netflix-Storyboard-Showreels, mit Vimeo-API-Einbettungen und eigenen Radix-UI-Modal-Playern für flüssige Wiedergabe auf Handy und Desktop.",
-          ],
-        },
-        shoes: {
-          title: "Quiz zur Schuhwahl",
-          kind: "Eigenes Projekt",
-          bullets: [
-            "Modulare Produktfinder-App ohne UI-Bibliothek von Drittanbietern (Lighthouse 100/100), aufgebaut um eine isolierte Zustandsmaschine (useQuiz.ts) mit stapelbasierten Verlaufs-Snapshots und gewichteten Empfehlungen.",
           ],
         },
       },
@@ -597,6 +605,15 @@ export const RESUME_COPY: Record<Language, ResumeCopy> = {
       live: "Открыть сайт",
       code: "Исходный код",
       items: {
+        staffManager: {
+          title: "Staff Manager",
+          kind: "Веб-приложение для графика смен (PWA)",
+          bullets: [
+            "Создал вместе с Caffè Commercio в Азоло (Италия), где приложением пользуются каждый день: планирование недели с телефона, заявки на отгулы, обмен сменами между коллегами и ежемесячный отчёт по часам для бухгалтера по зарплате.",
+            "Все правила находятся в Postgres, без собственного сервера: row-level security для владельцев, менеджеров и сотрудников, функция SECURITY DEFINER для каждого многошагового действия и журнал действий, который пишет сама база и который никто не может изменить; 17 наборов SQL-тестов и 84 юнит-теста.",
+            "Предупреждает перед назначением смены, если остаётся меньше 11 часов отдыха, положенных по итальянскому закону; подписки Stripe (оплата, клиентский портал, вебхуки) и push-уведомления через Netlify Functions.",
+          ],
+        },
         scaletta: {
           title: "Scaletta",
           kind: "Offline-first приложение для сетлистов (PWA)",
@@ -628,13 +645,6 @@ export const RESUME_COPY: Record<Language, ResumeCopy> = {
           kind: "Проект для клиента",
           bullets: [
             "Портфолио с большим количеством медиа: шоурилы 2D-анимации и раскадровок Disney/Netflix, встраивание через Vimeo API и собственные модальные плееры на Radix UI для плавного воспроизведения на телефоне и компьютере.",
-          ],
-        },
-        shoes: {
-          title: "Квиз по подбору кроссовок",
-          kind: "Личный проект",
-          bullets: [
-            "Модульное приложение для подбора товаров без сторонних UI-библиотек (Lighthouse 100/100), построенное вокруг изолированного конечного автомата (useQuiz.ts) со снимками истории в виде стека и взвешенными рекомендациями.",
           ],
         },
       },
